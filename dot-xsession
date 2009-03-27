@@ -1,0 +1,25 @@
+#!/bin/sh
+
+
+if [ -f $HOME/.colors.h ]; then
+  eval `/bin/grep '^#define' $HOME/.colors.h | /bin/sed 's/#define[[:space:]]*\([^ ]*\)[[:space:]]*\(.*\)/\1=\2;export \1;/'`
+fi
+
+xrdb -I$HOME -load $HOME/.Xdefaults.xsession
+
+xloadimage -onroot $HOME/desktop.jpg &
+
+xterm &
+
+export TRIMFG="red"
+export TRIMBG="black"
+
+xrdb -I$HOME -load $HOME/.Xdefaults
+
+xscreensaver &
+
+eval `ssh-agent`
+
+synclient AccelFactor=0.1
+synclient MaxSpeed=0.5
+fvwm2

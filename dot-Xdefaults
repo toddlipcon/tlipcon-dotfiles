@@ -1,0 +1,7 @@
+#include <.colors.h>
+
+!*foreground:            TEXTFG
+!*background:            TEXTBG
+!*borderColor:           TRIMBG
+
+#include <.Xdefaults.main>

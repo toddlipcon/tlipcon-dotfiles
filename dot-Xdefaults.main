@@ -1,0 +1,40 @@
+*lprCommand:            lpr
+
+!
+! Xterm defaults
+!
+
+XTerm.geometry:         80x24
+XTerm*foreground:       green
+XTerm*background:       black
+XTerm*saveLines:        1000
+XTerm*scrollBar:        true
+
+!
+! XEmacs defaults
+!
+
+Emacs.background:       white
+Emacs.geometry:         80x40+20+122
+Emacs.bold.attributeFont:        -*-courier-bold-r-*-*-12-*-*-*-*-*-iso8859-1
+
+!XEmacs.default.attributeForeground:	black
+!XEmacs.default.attributeBackground:	grey60
+!		      XEmacs.*attributeBackground: blah
+
+!Emacs*gui-button-face.attributeBackground: black
+!Emacs*gui-button-face.attributeForeground: green
+
+       Emacs.modeline.attributeBackground: grey50
+    Emacs.gui-element.attributeBackground: grey40
+	Emacs.toolbar.attributeBackground: grey10
+		 Emacs.scrollBarColor: orange
+
+Emacs*menubar*FontSet: -*-courier-medium-r-*-*-*-80-*-*-*-*-*-*
+Emacs*menubar*Background: grey10
+Emacs*menubar*Foreground: green
+
+Emacs*popup*FontSet: -*-courier-medium-r-*-*-*-80-*-*-*-*-*-*
+Emacs*popup*Background: grey10
+Emacs*popup*Foreground: green
+Emacs.topToolBarHeight: 0

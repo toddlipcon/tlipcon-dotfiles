@@ -1,0 +1,245 @@
+#
+# ~/.fvwm2rc $Revision: 1.7 $
+#
+# This is the initialization file for the window manager fvwm2. It is loaded
+# when fvwm2 is started up or restarted.
+#
+# fvwm2 treats lines beginning with # as comments.
+#
+# EDIT THIS FILE to customize your window manager's keybindings, mouse
+# commands, and visual look and feel.
+#
+# EXAMPLES are available in /usr/local/doc/startups.
+#
+
+
+DeskTopSize 3x3
+EdgeResistance 175 175
+EdgeScroll 100 100
+ClickTime 750
+XorValue 65535
+OpaqueMoveSize unlimited
+
+#************************************************************************
+#
+# FvwmButtons module
+#
+#************************************************************************
+AddToFunc StartFunction	"I" Module FvwmButtons
+*FvwmButtons: ButtonGeometry	90x80-1-1
+*FvwmButtons: Rows		1
+*FvwmButtons: Columns		6
+*FvwmButtons: BoxSize		smart
+*FvwmButtons: Back		$[ROOTBG]
+*FvwmButtons: (2x1 Swallow(UseOld, NoHints, Respawn) "xanyone" `Exec exec xanyone -s -q -bg $[TEXTBG] -fg $[TEXTFG]`)
+*FvwmButtons: (1x1 Swallow(UseOld, NoHints, Respawn) "xbiff" `Exec exec xbiff -bg $[TEXTBG]  -fg $[TEXTFG]`)
+*FvwmButtons: (2x1 Swallow(UseOld) "FvwmIconMan")
+*FvwmButtons: (2x1 Swallow(UseOld) "FvwmPager")
+*FvwmButtons: (1x1 Swallow(UseOld) "dclock" `Exec exec dclock -bg $[TEXTBG] -fg $[TEXTFG] -led_off $[TEXTBG] -fade -date "%b %e %Y"`)
+
+
+#************************************************************************
+#
+# FvwmPager module
+#
+#************************************************************************
+AddToFunc StartFunction	"I" Module FvwmPager 0 0
+*FvwmPager: Rows		1
+*FvwmPager: Font		none
+*FvwmPager: Back		$[ROOTBG]
+*FvwmPager: Fore		$[ROOTFG]
+*FvwmPager: Hilight		$[HIGHBG]
+*FvwmPager: WindowColors	$[ROOTFG] grey30 $[TEXTFG] grey10
+*FvwmPager: Balloons            All
+*FvwmPager: BalloonBack         $[HIGHBG]
+*FvwmPager: BalloonFore         $[HIGHFG]
+
+#************************************************************************
+#
+# FvwmIconMan module
+#
+#************************************************************************
+AddToFunc StartFunction	"I" Module FvwmIconMan
+*FvwmIconMan*Resolution  		page
+*FvwmIconMan*background  		$[ROOTBG]
+*FvwmIconMan*foreground  		$[ROOTBG]
+*FvwmIconMan*format      		"%t"
+*FvwmIconMan*followfocus 		true
+*FvwmIconMan*sort        		none
+*FvwmIconMan*plainbutton          	up $[ROOTFG] $[ROOTBG]
+*FvwmIconMan*iconbutton         	up $[ROOTFG] $[ROOTBG]
+*FvwmIconMan*selectbutton         	down $[ROOTFG] $[ROOTBG]
+*FvwmIconMan*focusbutton          	up $[HIGHFG] $[HIGHBG]
+*FvwmIconMan*focusandselectButton 	down $[HIGHFG] $[HIGHBG]
+*FvwmIconMan*dontshow 			icon=Untitled name=Untitled
+*FvwmIconMan*managergeometry 		1x5
+
+#************************************************************************
+#
+# Default styles
+#
+#************************************************************************
+Style *			MWMFunctions, MWMDecor, HintOverride
+Style *			DecorateTransient, NoPPosition
+
+Style *			Color $[TRIMFG] $[TRIMBG]
+Style *			HilightFore $[HIGHFG], HilightBack $[HIGHBG]
+
+Style "Fvwm*"		NoTitle, WindowListSkip
+Style "Fvwm*"		CirculateSkipIcon, CirculateSkip
+Style "FvwmButtons"	Sticky, NeverFocus
+
+Style "XTerm"		SloppyFocus
+
+MenuStyle *		mwm
+MenuStyle *		Foreground $[HIGHFG], Background $[HIGHBG]
+
+#************************************************************************
+#
+# Functions
+#
+#************************************************************************
+AddToFunc Raise-Move		I Raise
++				M Move
+
+AddToFunc Lower-Move		I Lower
++				M Move
+
+AddToFunc Maximize-Func		C Maximize	0 100
++				D Maximize	100 100
+
+DestroyFunc resize-click
+AddToFunc   resize-click
++ "C" Resize
+
+
+DestroyFunc ExecFocus
+AddToFunc ExecFocus
++ "I" Exec exec $0 $1
++ "I" Wait $0
++ "I" Next ($0) Focus
+
+DestoryFunc RearrangeAll
+AddToFunc RearrangeAll
++ "I" All (CurrentPage) PlaceAgain
+
+#************************************************************************
+#
+# Mouse and key bindings
+# ----------------------
+#    Contexts:                                Modifiers:
+#    R = root window                          N = no modifiers
+#    W = application window                   C = control
+#    T = window title bar                     S = shift
+#    S = window side                          M = Meta
+#    F = window frame (corners)               A = Any modifier
+#    I = icon window
+#    0-9 = title bar buttons
+#    A = anything except title bar buttons
+#
+#************************************************************************
+Mouse 1		R   	A       Menu RootMenu Nop
+Mouse 2		R    	A      	Menu Special Nop
+
+Mouse 3		R    	N      	WindowList NoGeometry
+Mouse 2		R    	M      	Menu Window-Ops Nop
+
+Mouse 0		FS	A	resize-click
+
+Mouse 1         W       M       Raise-Move
+Mouse 2         W       M       Move
+Mouse 3         W       M       Lower-Move
+
+
+Mouse 1         I       N       Iconify
+Mouse 2         I       N       Iconify
+Mouse 3         I       N       Iconify
+
+Mouse 1    	1       N	Menu Window-Ops Nop
+Mouse 2    	1       N	Menu Window-Ops Nop
+Mouse 3    	1       N	Menu Window-Ops Nop
+
+Mouse 1         4       N       Iconify
+Mouse 2         4       N       Iconify
+Mouse 3         4       N       Iconify
+
+Mouse 1         2       N       Maximize-Func
+Mouse 2         2       N       Maximize-Func
+Mouse 3         2       N       Maximize-Func
+
+Key F1          A       A       GotoPage 0 0
+Key F2          A       A       GotoPage 1 0
+Key F3          A       A       GotoPage 2 0 
+Key F4          A       A       GotoPage 0 1
+Key F5		A	A	GotoPage 1 1
+Key F6		A	A	GotoPage 2 1
+Key F7		A	A	GotoPage 0 2
+Key F8		A	A	GotoPage 1 2
+Key F9		A	A	GotoPage 2 2
+
+Key	Left	A	MS	CursorMove -10 0
+Key	H	A	MS	CursorMove -10 0
+Key     Down    A       MS      CursorMove 0 10
+Key     J    	A       MS      CursorMove 0 10
+Key     Up      A       MS      CursorMove 0 -10
+Key     K      	A       MS      CursorMove 0 -10
+Key     Right   A       MS      CursorMove 10 0
+Key     L   	A       MS      CursorMove 10 0
+
+Key	Left	A	CMS	CursorMove -1 0
+Key	H	A	CMS	CursorMove -1 0
+Key     Down    A       CMS     CursorMove 0 1
+Key     J	A       CMS     CursorMove 0 1
+Key     Up      A       CMS     CursorMove 0 -1
+Key     K	A       CMS     CursorMove 0 -1
+Key     Right   A       CMS     CursorMove 1 0
+Key     L	A       CMS     CursorMove 1 0
+
+Key	I       W       MS      Raise
+Key	O       W       MS      Lower
+Key	M	W	MS	Move
+Key	N	W	MS	Resize
+
+Key	slash	W	MS	Raise
+Key	period	W	MS	Lower
+Key	Shift_R	W	MS	Raise
+
+Key	backslash A	MS	ExecFocus xterm &
+Key	bracketright A	MS	Exec iceweasel &
+
+
+#************************************************************************
+#
+# Menus
+#
+#************************************************************************
+
+AddToMenu RootMenu	"Root Menu"	Title
++			"XTerm"		Exec xterm &
++                       "Mozilla Test"       Exec mozilla &
++			"XEmacs"	Exec xemacs &
++			"Applications"	Popup Applications
++			""		Nop
++			"XLock"		Exec exec xlock -mode random
++                       "Rearrange"     RearrangeAll
+
+AddToMenu Special	"Special"	Title		
++			"Refresh"	Refresh
++			"Restart fvwm2"	Restart csh -c "exec fvwm2"
++			"Reload XDefaults"  Exec xrdb -I$HOME -load $HOME/.Xdefaults
++			""		Nop
++			""		Nop
++			"Logout"	Quit
+
+AddToMenu Window-Ops	"Window Ops"	Title		
++			"Move"		Move
++			"Resize"	Resize
++			"Raise"		Raise
++			"Lower"		Lower 
++			""		Nop
++		 	"(De)Iconify"	Iconify
++			"(Un)Stick"	Stick		
++			"(Un)Maximize"	Maximize
++			""		Nop
++			"Close"		Close
++			"Destroy"	Destroy

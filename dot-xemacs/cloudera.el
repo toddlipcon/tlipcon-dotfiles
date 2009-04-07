@@ -5,14 +5,13 @@
   (save-excursion
     (beginning-of-buffer)
     (cond
-     ((string-match "\\.py$" (buffer-file-name))
+     ((or (string-match "\\.py$" (buffer-file-name))
+          (string-match "/targets$" (buffer-file-name)))
       (progn
         (insert "#!/usr/bin/env python2.5")
         (newline)
         (insert "# (c) Copyright 2009 Cloudera, Inc.")
-        (newline)))
-      )))
-
+        (newline))))))
 
 ; HTML mode - use hm--html-mode
 (setq auto-mode-alist (cons '("\\.html$" . hm--html-mode)
@@ -27,6 +26,10 @@
 ))
 
 
+; Python mode for targets files
+(setq auto-mode-alist (cons '("targets$" . python-mode)
+                            auto-mode-alist))
+
 ; Settings for python style
 (add-hook 'python-mode-hook
           (lambda ()
@@ -37,10 +40,6 @@
 ;; highlight trailing whitespaces in all modes - our coding guidelines say
 ;; trailing whitespace is bad
 (setq-default show-trailing-whitespace t)
-
-;; ;; highlight tabs
-(when (try-require 'show-wspace)
-   (add-hook 'font-lock-mode-hook 'highlight-tabs))
 
 ;; delete all the trailing whitespaces and tabs across the current buffer
 (defun cloudera-delete-trailing-whitespaces-and-untabify ()

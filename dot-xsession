@@ -20,6 +20,4 @@ xscreensaver &
 
 eval `ssh-agent`
 
-synclient AccelFactor=0.1
-synclient MaxSpeed=0.5
 fvwm2

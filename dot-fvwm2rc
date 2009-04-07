@@ -31,8 +31,6 @@ AddToFunc StartFunction	"I" Module FvwmButtons
 *FvwmButtons: Columns		6
 *FvwmButtons: BoxSize		smart
 *FvwmButtons: Back		$[ROOTBG]
-*FvwmButtons: (2x1 Swallow(UseOld, NoHints, Respawn) "xanyone" `Exec exec xanyone -s -q -bg $[TEXTBG] -fg $[TEXTFG]`)
-*FvwmButtons: (1x1 Swallow(UseOld, NoHints, Respawn) "xbiff" `Exec exec xbiff -bg $[TEXTBG]  -fg $[TEXTFG]`)
 *FvwmButtons: (2x1 Swallow(UseOld) "FvwmIconMan")
 *FvwmButtons: (2x1 Swallow(UseOld) "FvwmPager")
 *FvwmButtons: (1x1 Swallow(UseOld) "dclock" `Exec exec dclock -bg $[TEXTBG] -fg $[TEXTFG] -led_off $[TEXTBG] -fade -date "%b %e %Y"`)
@@ -205,7 +203,7 @@ Key	period	W	MS	Lower
 Key	Shift_R	W	MS	Raise
 
 Key	backslash A	MS	ExecFocus xterm &
-Key	bracketright A	MS	Exec iceweasel &
+Key	bracketright A	MS	Exec firefox &
 
 
 #************************************************************************

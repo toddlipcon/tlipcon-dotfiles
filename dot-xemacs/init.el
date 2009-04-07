@@ -159,6 +159,10 @@
             (turn-on-font-lock)
             (define-key ruby-mode-map [(meta backspace)] 'backward-kill-word)))
 
+;; cycle buffer
+(load-file "~/.xemacs/cycle-buffer.el")
+(global-set-key [(control x) right] 'cycle-buffer)
+(global-set-key [(control x) left] 'cycle-buffer-backward)
 
 
 (load-file "~/.xemacs/custom-fonts.el")

@@ -13,6 +13,15 @@
         (insert "# (c) Copyright 2009 Cloudera, Inc.")
         (newline))))))
 
+(defun apache-insert-license ()
+  "Insert the Java Apache 2.0 license at the top of the file."
+  (interactive)
+  (save-excursion
+    (beginning-of-buffer)
+    (cond
+     ((string-match "\\.java$" (buffer-file-name))
+      (insert-file "~/.xemacs/data/apache.license")))))
+
 ; HTML mode - use hm--html-mode
 (setq auto-mode-alist (cons '("\\.html$" . hm--html-mode)
                             auto-mode-alist))
@@ -36,6 +45,14 @@
             (setq py-indent-offset 2)
             (setq indent-tabs-mode nil)))
 
+; java style
+(defun set-c-settings ()
+  "Set up cc-mode general settings common to several modes."
+  (setq c-basic-offset 2)
+  (setq indent-tabs-mode nil))
+
+(add-hook 'java-mode-hook 'set-c-settings)
+(add-hook 'jde-mode-hook 'set-c-settings)
 
 ;; highlight trailing whitespaces in all modes - our coding guidelines say
 ;; trailing whitespace is bad

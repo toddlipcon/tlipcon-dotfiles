@@ -1,2 +1,4 @@
 set expandtab
+set ai
+set sw=2
 syntax on

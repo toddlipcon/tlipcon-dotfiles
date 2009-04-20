@@ -165,6 +165,13 @@
 (global-set-key [(control x) left] 'cycle-buffer-backward)
 
 
+;; uniquify - change buffer names to eg Makefile|dir1 and Makefile|dir2 instead of Makefile and Makefile<2>
+(load-library "uniquify")
+(set-variable 'uniquify-buffer-name-style 'post-forward)
+
+;; iswitchb - better buffer switching
+(iswitchb-default-keybindings)
+
 (load-file "~/.xemacs/custom-fonts.el")
 (load-file "~/.xemacs/lineker.el")
 (load-file "~/.xemacs/fcsh-mode.el")

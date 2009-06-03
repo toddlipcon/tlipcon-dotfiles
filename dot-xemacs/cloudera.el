@@ -22,6 +22,11 @@
      ((string-match "\\.java$" (buffer-file-name))
       (insert-file "~/.xemacs/data/apache.license")))))
 
+(defun oah ()
+  "Shortcut for org.apache.hadoop"
+  (interactive)
+  (insert "org.apache.hadoop"))
+
 ; HTML mode - use hm--html-mode
 (setq auto-mode-alist (cons '("\\.html$" . hm--html-mode)
                             auto-mode-alist))

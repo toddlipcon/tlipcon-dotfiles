@@ -180,13 +180,13 @@
 (load-file "~/.xemacs/cloudera.el")
 (load-file "~/.xemacs/scroll-wheel.el")
 (load-file "~/.xemacs/custom-asm-mode.el")
+(load-file "~/.xemacs/thrift.el")
 
 (global-set-key [(control return)] 'compile)
 
 ; Use C++ mode for .h files
 (setq auto-mode-alist
       (append auto-mode-alist '(("\.h:"   . c++-mode))))
-
 
 (gnuserv-start)
 

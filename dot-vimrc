@@ -2,3 +2,7 @@ set expandtab
 set ai
 set sw=2
 syntax on
+
+highlight DiffAdd    ctermbg=White
+highlight DiffChange    ctermbg=White
+highlight DiffText ctermbg=Yellow

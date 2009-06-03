@@ -171,6 +171,9 @@
 
 ;; iswitchb - better buffer switching
 (iswitchb-default-keybindings)
+;; when switching to a buffer that's open in another frame, open it
+;; in this window as well, rather than raising that frame
+(set-variable 'iswitchb-default-method 'samewindow)
 
 (load-file "~/.xemacs/custom-fonts.el")
 (load-file "~/.xemacs/lineker.el")

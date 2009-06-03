@@ -113,7 +113,7 @@
 )
 
 (defun my-java-mode-hook ()
-  (setq c-basic-offset 4)
+  (setq c-basic-offset 2)
   (setq ident-tabs-mode nil)
   (font-lock-mode)
   (line-number-mode t)

@@ -7,7 +7,7 @@
 XTerm.geometry:         80x24
 XTerm*foreground:       green
 XTerm*background:       black
-XTerm*saveLines:        1000
+XTerm*saveLines:        40000
 XTerm*scrollBar:        true
 
 !

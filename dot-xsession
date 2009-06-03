@@ -20,4 +20,8 @@ xscreensaver &
 
 eval `ssh-agent`
 
+# syndaemon disables the touchpad for a short period of time after
+# keypresses to avoid accidental input
+which syndaemon && syndaemon -S -t -i 1 -d
+
 fvwm2

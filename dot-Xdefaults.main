@@ -9,6 +9,7 @@ XTerm*foreground:       green
 XTerm*background:       black
 XTerm*saveLines:        40000
 XTerm*scrollBar:        true
+XTerm*termName:         xterm-color
 
 !
 ! XEmacs defaults
@@ -30,6 +31,7 @@ Emacs.bold.attributeFont:        -*-courier-bold-r-*-*-12-*-*-*-*-*-iso8859-1
 	Emacs.toolbar.attributeBackground: grey10
 		 Emacs.scrollBarColor: orange
 
+! For xemacs
 Emacs*menubar*FontSet: -*-courier-medium-r-*-*-*-80-*-*-*-*-*-*
 Emacs*menubar*Background: grey10
 Emacs*menubar*Foreground: green
@@ -38,3 +40,8 @@ Emacs*popup*FontSet: -*-courier-medium-r-*-*-*-80-*-*-*-*-*-*
 Emacs*popup*Background: grey10
 Emacs*popup*Foreground: green
 Emacs.topToolBarHeight: 0
+
+
+! For gnu emacs22
+Emacs*pane.menubar.background: grey10
+Emacs*pane.menubar.foreground: green

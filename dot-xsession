@@ -24,4 +24,5 @@ eval `ssh-agent`
 # keypresses to avoid accidental input
 which syndaemon && syndaemon -S -t -i 1 -d
 
+xset r 400 40
 fvwm2

@@ -10,7 +10,7 @@
       (progn
         (insert "#!/usr/bin/env python2.5")
         (newline)
-        (insert "# (c) Copyright 2009 Cloudera, Inc.")
+        (insert "# (c) Copyright 2009 Cloudera, Inc. All rights reserved.")
         (newline))))))
 
 (defun apache-insert-license ()

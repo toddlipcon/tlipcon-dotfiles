@@ -204,7 +204,7 @@ Key	period	W	MS	Lower
 Key	Shift_R	W	MS	Raise
 
 Key	backslash A	MS	ExecFocus xterm &
-Key	bracketright A	MS	Exec firefox &
+Key	bracketright A	MS	Exec firefox-3.5 &
 Key	P       A	MS	Exec gnuclient &
 
 

@@ -1,0 +1,193 @@
+(custom-set-variables
+  ;; custom-set-variables was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ '(bsh-commands "/usr/share/java/bsh-commands")
+ '(bsh-jar "/tmp/bsh_jar/bsh-2.0b4.jar")
+ '(dabbrev-case-fold-search nil)
+ '(font-lock-maximum-decoration t)
+ '(font-lock-verbose nil)
+ '(gutter-buffers-tab-enabled nil)
+ '(ido-default-buffer-method (quote selected-window))
+ '(ido-max-work-file-list 100)
+ '(indent-tabs-mode nil)
+ '(jde-ant-enable-find t)
+ '(jde-ant-program "/home/todd/bin/ant_fixjvm")
+ '(jde-jdk-registry (quote (("1.6.0" . "/usr/lib/jvm/java-6-sun"))))
+ '(js2-auto-indent-p nil)
+ '(js2-basic-offset 2)
+ '(js2-bounce-indent-p t)
+ '(js2-highlight-level 3)
+ '(js2-idle-timer-delay 0.1)
+ '(js2-language-version 150)
+ '(js2-mode-escape-quotes nil)
+ '(lineker-column-limit 80)
+ '(mumamo-set-major-mode-delay 0.5)
+ '(nxhtml-skip-welcome t)
+ '(package-get-download-sites (quote (("US (Main XEmacs Site)" "ftp.xemacs.org" "pub/xemacs/packages") ("Australia (aarnet.edu.au)" "mirror.aarnet.edu.au" "pub/xemacs/packages") ("Australia (au.xemacs.org)" "ftp.au.xemacs.org" "pub/xemacs/packages") ("Austria (at.xemacs.org)" "ftp.at.xemacs.org" "editors/xemacs/packages") ("Belgium (be.xemacs.org)" "ftp.be.xemacs.org" "xemacs/packages") ("Brazil (br.xemacs.org)" "ftp.br.xemacs.org" "pub/xemacs/packages") ("Canada (ca.xemacs.org)" "ftp.ca.xemacs.org" "pub/Mirror/xemacs/packages") ("Canada (crc.ca)" "ftp.crc.ca" "pub/packages/editors/xemacs/packages") ("Canada (ualberta.ca)" "sunsite.ualberta.ca" "pub/Mirror/xemacs/packages") ("Czech Republic (cz.xemacs.org)" "ftp.cz.xemacs.org" "MIRRORS/ftp.xemacs.org/pub/xemacs/packages") ("Denmark (dk.xemacs.org)" "ftp.dk.xemacs.org" "pub/emacs/xemacs/packages") ("Finland (fi.xemacs.org)" "ftp.fi.xemacs.org" "pub/mirrors/ftp.xemacs.org/pub/tux/xemacs/packages") ("France (fr.xemacs.org)" "ftp.fr.xemacs.org" "pub/xemacs/packages") ("France (mirror.cict.fr)" "mirror.cict.fr" "xemacs/packages") ("France (pasteur.fr)" "ftp.pasteur.fr" "pub/computing/xemacs/packages") ("Germany (de.xemacs.org)" "ftp.de.xemacs.org" "pub/ftp.xemacs.org/tux/xemacs/packages") ("Germany (tu-darmstadt.de)" "ftp.tu-darmstadt.de" "pub/editors/xemacs/packages") ("Ireland (ie.xemacs.org)" "ftp.ie.xemacs.org" "mirrors/ftp.xemacs.org/pub/xemacs/packages") ("Italy (it.xemacs.org)" "ftp.it.xemacs.org" "unix/packages/XEMACS/packages") ("Japan (aist.go.jp)" "ring.aist.go.jp" "pub/text/xemacs/packages") ("Japan (asahi-net.or.jp)" "ring.asahi-net.or.jp" "pub/text/xemacs/packages") ("Japan (dti.ad.jp)" "ftp.dti.ad.jp" "pub/unix/editor/xemacs/packages") ("Japan (jaist.ac.jp)" "ftp.jaist.ac.jp" "pub/GNU/xemacs/packages") ("Japan (jp.xemacs.org)" "ftp.jp.xemacs.org" "pub/GNU/xemacs/packages") ("Japan (nucba.ac.jp)" "mirror.nucba.ac.jp" "mirror/xemacs/packages") ("Japan (sut.ac.jp)" "sunsite.sut.ac.jp" "pub/archives/packages/xemacs/packages") ("Korea (kr.xemacs.org)" "ftp.kr.xemacs.org" "pub/tools/emacs/xemacs/packages") ("New Zealand (nz.xemacs.org)" "ftp.nz.xemacs.org" "mirror/ftp.xemacs.org/packages") ("Norway (no.xemacs.org)" "ftp.no.xemacs.org" "pub/xemacs/packages") ("Poland (pl.xemacs.org)" "ftp.pl.xemacs.org" "pub/unix/editors/xemacs/packages") ("Russia (ru.xemacs.org)" "ftp.ru.xemacs.org" "pub/xemacs/packages") ("Slovakia (sk.xemacs.org)" "ftp.sk.xemacs.org" "pub/mirrors/xemacs/packages") ("South Africa (za.xemacs.org)" "ftp.za.xemacs.org" "mirrorsites/ftp.xemacs.org/packages") ("Sweden (se.xemacs.org)" "ftp.se.xemacs.org" "pub/gnu/xemacs/packages") ("Switzerland (ch.xemacs.org)" "ftp.ch.xemacs.org" "mirror/xemacs/packages") ("UK (uk.xemacs.org)" "ftp.uk.xemacs.org" "sites/ftp.xemacs.org/pub/xemacs/packages") ("US (ibiblio.org)" "ibiblio.org" "pub/mirrors/xemacs/packages") ("US (stealth.net)" "ftp.stealth.net" "pub/mirrors/ftp.xemacs.org/pub/xemacs/packages") ("US (unc.edu)" "metalab.unc.edu" "pub/packages/editors/xemacs/packages") ("US (us.xemacs.org)" "ftp.us.xemacs.org" "pub/xemacs/packages") ("US (utk.edu)" "ftp.sunsite.utk.edu" "pub/xemacs/packages"))))
+ '(python-indent 2)
+ '(query-user-mail-address nil)
+ '(sgml-markup-faces (quote ((start-tag . default) (end-tag . default) (comment . default) (pi . default) (sgml . default) (doctype . default) (entity . default) (shortref . default) (ignored . default) (ms-start . default) (ms-end . default))))
+ '(user-mail-address "todd@lipcon.org"))
+
+(load-file "~/.xemacs/init.el")
+(load-file "~/.xemacs/custom.el")
+(load-file "~/Desktop/espresso.elc")
+(load-file "~/.emacs-inc/markdown-mode.elc")
+(load-file "~/.emacs-inc/js2.elc")
+(tool-bar-mode -1)
+(set-scroll-bar-mode 'right)
+(set-variable 'inhibit-startup-screen t)
+(transient-mark-mode 1)
+
+(add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
+
+(autoload 'js2-mode "js2-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+(autoload 'espresso-mode "espresso")
+
+
+(defun my-js2-indent-function ()
+  (interactive)
+  (save-restriction
+    (widen)
+    (let* ((inhibit-point-motion-hooks t)
+           (parse-status (save-excursion (syntax-ppss (point-at-bol))))
+           (offset (- (current-column) (current-indentation)))
+           (indentation (espresso--proper-indentation parse-status))
+           node)
+
+      (save-excursion
+
+        ;; I like to indent case and labels to half of the tab width
+        (back-to-indentation)
+        (if (looking-at "case\\s-")
+            (setq indentation (+ indentation (/ espresso-indent-level 2))))
+
+        ;; consecutive declarations in a var statement are nice if
+        ;; properly aligned, i.e:
+        ;;
+        ;; var foo = "bar",
+        ;;     bar = "foo";
+        (setq node (js2-node-at-point))
+        (when (and node
+                   (= js2-NAME (js2-node-type node))
+                   (= js2-VAR (js2-node-type (js2-node-parent node))))
+          (setq indentation (+ 4 indentation))))
+
+      (indent-line-to indentation)
+      (when (> offset 0) (forward-char offset)))))
+
+
+(defun my-js2-mode-hook ()
+  (require 'espresso)
+  (setq espresso-indent-level 2
+        indent-tabs-mode t
+        tab-width 2
+        c-basic-offset 2)
+  (c-toggle-auto-state 0)
+  (c-toggle-hungry-state 0)
+  (set (make-local-variable 'indent-line-function) 'my-js2-indent-function)
+  (define-key js2-mode-map [(meta control |)] 'cperl-lineup)
+  (define-key js2-mode-map [(meta control \;)] 
+    '(lambda()
+       (interactive)
+       (insert "/* -----[ ")
+       (save-excursion
+         (insert " ]----- */"))
+       ))
+  (define-key js2-mode-map [(return)] 'newline-and-indent)
+  (define-key js2-mode-map [(backspace)] 'c-electric-backspace)
+  (define-key js2-mode-map [(control d)] 'c-electric-delete-forward)
+  (define-key js2-mode-map [(control meta q)] 'my-indent-sexp)
+  (if (featurep 'js2-highlight-vars)
+    (js2-highlight-vars-mode))
+  (message "My JS2 hook"))
+
+(add-hook 'js2-mode-hook 'my-js2-mode-hook)
+
+(defun switch-to-other-buffer ()
+  (interactive)
+  (switch-to-buffer (other-buffer)))
+(global-set-key [(control meta ?l)] 'switch-to-other-buffer)
+
+
+(defun scroll-down-one ()
+  (interactive)
+  (scroll-down 1))
+(defun scroll-up-one ()
+  (interactive)
+  (scroll-up 1))
+
+(global-set-key [(control meta up)] 'scroll-down-one)
+(global-set-key [(control meta down)] 'scroll-up-one)
+
+(global-set-key [(control up)] (lambda () (interactive) (forward-line -6)))
+(global-set-key [(control down)] (lambda () (interactive) (forward-line 6)))
+
+
+(defun ido-find-file-in-tag-files ()
+  (interactive)
+  (save-excursion
+    (let ((enable-recursive-minibuffers t))
+      (visit-tags-table-buffer))
+    (find-file
+     (expand-file-name
+      (ido-completing-read
+       "Project file: " (tags-table-files) nil t)))))
+(ido-mode 1)
+(global-set-key [(control ?x) ?g] 'ido-find-file-in-tag-files)
+
+
+(load-file "~/.emacs-inc/twit.el")
+
+(load-file "~/.emacs-inc/nxhtml/autostart.el")
+
+(add-to-list 'auto-mode-alist '("\\.mako\\'" . mako-nxhtml-mumamo-mode))
+
+
+(custom-set-faces
+  ;; custom-set-faces was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ '(default ((t (:foreground "gray90" :background "black"))))
+ '(blue ((t (:foreground "#99f"))) t)
+ '(bold ((t nil)))
+ '(cperl-array-face ((nil (:foreground "Red"))))
+ '(cperl-hash-face ((nil (:foreground "Red"))))
+ '(custom-group-tag ((nil (:foreground "#87cefa" :underline t))))
+ '(custom-state ((nil (:foreground "#90ee90"))))
+ '(custom-variable-tag ((nil (:foreground "#87cefa" :underline t))))
+ '(ecb-default-highlight-face ((((class color) (background dark)) (:background "darkblue"))))
+ '(font-lock-comment-face ((nil (:foreground "#b0e0e6"))))
+ '(font-lock-doc-string-face ((nil (:foreground "#90ee90"))) t)
+ '(font-lock-function-name-face ((nil (:foreground "#eeb4b4"))))
+ '(font-lock-keyword-face ((nil (:foreground "#ffb90f"))))
+ '(font-lock-preprocessor-face ((nil (:foreground "#00ced1"))))
+ '(font-lock-reference-face ((nil (:foreground "red"))) t)
+ '(font-lock-string-face ((nil (:foreground "#90ee90"))))
+ '(font-lock-type-face ((nil (:foreground "cyan2"))))
+ '(font-lock-variable-name-face ((nil (:foreground "plum1"))))
+ '(font-lock-warning-face ((nil (:foreground "Red" :underline nil))))
+ '(highlight ((t (:background "#556b2f"))))
+ '(html-helper-bold-face ((t nil)))
+ '(isearch ((t (:background "#008b8b"))))
+ '(jde-java-font-lock-link-face ((t (:foreground "DeepSkyBlue"))))
+ '(js2-error-face ((((class color) (background dark)) (:background "#200"))))
+ '(js2-warning-face ((((class color) (background dark)) (:background "#600"))))
+ '(list-mode-item-selected ((t (:background "gray32"))) t)
+ '(mumamo-background-chunk-major ((((class color) (min-colors 88) (background dark)) (:background "#000015"))))
+ '(mumamo-background-chunk-submode1 ((((class color) (min-colors 88) (background dark)) (:background "#002500"))))
+ '(primary-selection ((t (:background "gray40"))) t)
+ '(region ((t (:background "#000077"))))
+ '(secondary-selection ((t (:background "#008b8b"))))
+ '(text-cursor ((t (:foreground "gray70" :background "red"))) t)
+ '(trailing-whitespace ((((class color) (background dark)) (:underline "red3"))))
+ '(widget-documentation ((nil (:foreground "#90ee90"))))
+ '(widget-field ((((class grayscale color) (background light)) (:background "gray25"))))
+ '(widget-inactive ((((class grayscale color) (background light)) (:foreground "gray60"))))
+ '(zmacs-region ((t (:background "gray45"))) t))
+
+(set-face-font 'default "-*-fixed-medium-r-*--10-*-iso8859-1");

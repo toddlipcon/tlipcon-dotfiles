@@ -125,14 +125,6 @@
 (add-hook 'php-mode-hook 'my-php-mode-hook)
 (add-hook 'java-mode-hook 'my-java-mode-hook)
 
-(require 'mmm-auto)
-(setq mmm-global-mode 'maybe)
-(setq mmm-submode-decoration-level 0)
-
-(add-hook 'mmm-mode-hook (lambda ()
-			   (mmm-set-major-mode-preferences 'html 'xml-mode)
-			   ))
-
 
 (add-hook 'sql-mode-hook (lambda ()
 			   (sql-set-product 'mysql)
@@ -170,13 +162,12 @@
 (set-variable 'uniquify-buffer-name-style 'post-forward)
 
 ;; iswitchb - better buffer switching
+(load-library "iswitchb")
 (iswitchb-default-keybindings)
 ;; when switching to a buffer that's open in another frame, open it
 ;; in this window as well, rather than raising that frame
 (set-variable 'iswitchb-default-method 'samewindow)
 
-(load-file "~/.xemacs/custom-fonts.el")
-(load-file "~/.xemacs/lineker.el")
 (load-file "~/.xemacs/fcsh-mode.el")
 (load-file "~/.xemacs/erlang-custom.el")
 (load-file "~/.xemacs/smart-comint.el")
@@ -185,13 +176,19 @@
 (load-file "~/.xemacs/custom-asm-mode.el")
 (load-file "~/.xemacs/thrift.el")
 
+;; ack mode
+(load-file "~/.xemacs/xemacs-ack.el")
+
 (global-set-key [(control return)] 'compile)
 
 ; Use C++ mode for .h files
 (setq auto-mode-alist
       (append auto-mode-alist '(("\.h:"   . c++-mode))))
 
-(gnuserv-start)
+(defconst xemacsp (string-match "Lucid\\|XEmacs" emacs-version) "\
+Non nil if using XEmacs.")
+
+(if xemacsp (gnuserv-start) (server-start))
 
 ; (setq semantic-load-turn-useful-things-on t)
 ; (require 'semantic-load)

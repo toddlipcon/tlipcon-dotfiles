@@ -1,12 +1,11 @@
 (load "font-lock")
 
-(set-face-font 'default '("-*-fixed-medium-r-*--10-*-iso8859-1"));;
+(set-face-font 'default "-*-fixed-medium-r-*--10-*-iso8859-1");
 
 (cond ((fboundp 'global-font-lock-mode)
        ;; Customize face attributes
        (setq font-lock-face-attributes
-             ;; Symbol-for-Face Foreground Background Bold Italic 
-Underline
+             ;; Symbol-for-Face Foreground Background Bold Italic Underline
              '((font-lock-comment-face       "Purple")
                (font-lock-string-face        "green")
                (font-lock-keyword-face       "orange red")
@@ -14,7 +13,7 @@ Underline
                (font-lock-variable-name-face "white")
                (font-lock-type-face          "white" "black" "false"
 "false" "true")
-               (font-lock-reference-face     "Purple")
+               (font-lock-constant-face     "Purple")
                ))
        ;; Load the font-lock package.
        (require 'font-lock)

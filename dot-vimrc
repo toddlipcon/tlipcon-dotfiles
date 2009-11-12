@@ -1,6 +1,8 @@
 set expandtab
 set ai
 set sw=2
+set incsearch
+set hlsearch
 syntax on
 
 highlight DiffAdd    ctermbg=White

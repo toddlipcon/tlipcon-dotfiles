@@ -1,5 +1,3 @@
-(load-file "~/.xemacs/darkcolor.el")
-
 ;(set-face-font 'default '("-*-fixed-medium-r-*--14-*-iso8859-1"));;
 
 

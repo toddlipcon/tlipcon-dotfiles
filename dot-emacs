@@ -6,6 +6,7 @@
  '(bsh-commands "/usr/share/java/bsh-commands")
  '(bsh-jar "/tmp/bsh_jar/bsh-2.0b4.jar")
  '(dabbrev-case-fold-search nil)
+ '(ecb-layout-window-sizes (quote (("left9" (0.32620320855614976 . 0.9893617021276596)))))
  '(font-lock-maximum-decoration t)
  '(font-lock-verbose nil)
  '(gutter-buffers-tab-enabled nil)

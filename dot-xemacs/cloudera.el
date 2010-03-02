@@ -22,6 +22,20 @@
      ((string-match "\\.java$" (buffer-file-name))
       (insert-file "~/.xemacs/data/apache.license")))))
 
+(defun wikify-jira-links ()
+   "Convert <proj>-<num> to {(jh|jc):<proj>-<num>}"
+   (interactive)
+   (setq areg "\\(hadoop\\|hdfs\\|mr\\|mapreduce\\|avro\\)-[0-9]+")
+   (setq creg "\\(cloudera\\|cdh\\|desktop\\)-[0-9]+")
+   (save-excursion
+     (goto-char 0)
+     (replace-regexp "{j[ch]:\\([^}]+\\)}" "\\1")
+     (goto-char 0)
+     (replace-regexp areg "{jh:\\\&}")
+     (replace-regexp creg "{jc:\\\&}")
+     (replace-string "{jh:mr-" "{jh:mapreduce-")))
+
+
 (defun oah ()
   "Shortcut for org.apache.hadoop"
   (interactive)
@@ -55,6 +69,32 @@
   "Set up cc-mode general settings common to several modes."
   (setq c-basic-offset 2)
   (setq indent-tabs-mode nil))
+
+
+(defun switch-to-test ()
+  "Switch to corresponding unit test."
+  (interactive)
+  (let ((newf
+         (if
+             (string-match "/Test[^/]+\\.java$" (buffer-file-name))
+             (let*
+                 ((newf (replace-regexp-in-string "/Test\\([^/]+\\.java\\)$" "/\\1" (buffer-file-name)))
+                  (newf (replace-in-string newf "hadoop-hdfs/src/test/hdfs" "hadoop-hdfs/src/java"))
+                  (newf (replace-in-string newf "hadoop-common/src/test/core" "hadoop-common/src/java"))
+                  (newf (replace-in-string newf "hadoop-mapreduce/src/test/mapred" "hadoop-common/src/java")))
+               newf)
+           (let*
+               ((newf (replace-regexp-in-string "/\\([^/]+\\.java\\)$" "/Test\\1" (buffer-file-name)))
+                (newf (replace-in-string newf "hadoop-hdfs/src/java" "hadoop-hdfs/src/test/hdfs"))
+                (newf (replace-in-string newf "hadoop-common/src/java" "hadoop-common/src/test/core"))
+                (newf (replace-in-string newf "hadoop-mapreduce/src/java" "hadoop-common/src/test/mapred")))
+             newf))))
+    (message "Switching to file %s..." newf)
+    (find-file newf)))
+(global-set-key [(control x) (t)] 'switch-to-test)
+
+
+
 
 (add-hook 'java-mode-hook 'set-c-settings)
 (add-hook 'jde-mode-hook 'set-c-settings)

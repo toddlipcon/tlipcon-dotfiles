@@ -20,6 +20,9 @@ ClickTime 750
 XorValue 65535
 OpaqueMoveSize unlimited
 
+# Allow commands from shell scripts
+AddToFunc StartFunction "I" Module FvwmCommandS
+
 #************************************************************************
 #
 # FvwmButtons module

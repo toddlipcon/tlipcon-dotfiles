@@ -42,7 +42,7 @@ Adapted from (defun grep) from compile.el
 					;; should be refactored by
 					;; count-matches returning
 					;; count.
-					(let ((count 0) opoint)
+					(let ((count 0) (opoint nil))
 					  (save-excursion
 					    (goto-char (point-min))
 					    (while (and (not (eobp))

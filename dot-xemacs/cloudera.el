@@ -25,7 +25,7 @@
 (defun wikify-jira-links ()
    "Convert <proj>-<num> to {(jh|jc):<proj>-<num>}"
    (interactive)
-   (setq areg "\\(hadoop\\|hdfs\\|mr\\|mapreduce\\|avro\\)-[0-9]+")
+   (setq areg "\\(hadoop\\|hdfs\\|mr\\|mapreduce\\|avro\\|hbase\\)-[0-9]+")
    (setq creg "\\(cloudera\\|cdh\\|desktop\\)-[0-9]+")
    (save-excursion
      (goto-char 0)
@@ -34,6 +34,17 @@
      (replace-regexp areg "{jh:\\\&}")
      (replace-regexp creg "{jc:\\\&}")
      (replace-string "{jh:mr-" "{jh:mapreduce-")))
+
+(define-skeleton tex-bullets-slide
+  "Inserts a bullet point slide."
+  "Title: "
+  "\\begin{frame}[t]\n"
+  "\\frametitle{" str | "Title" "}\n"
+  "\\begin{itemize}\n"
+  "  \\item " _ "\n"
+  "\\end{itemize}\n"
+  "\\end{frame}\n\n"
+  )
 
 
 (defun oah ()
@@ -67,7 +78,11 @@
 ; java style
 (defun set-c-settings ()
   "Set up cc-mode general settings common to several modes."
-  (setq c-basic-offset 2)
+  (interactive)
+  (setq c-basic-offset 
+        (if (string-match "jcarder" (buffer-file-name)) ;; jcarder uses 4 indent
+            4
+          2))
   (setq indent-tabs-mode nil))
 
 

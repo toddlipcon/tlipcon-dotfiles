@@ -84,7 +84,7 @@
 
 (defun my-js2-mode-hook ()
   (require 'espresso)
-  (setq espresso-indent-level 2
+  (set-variable espresso-indent-level 2
         indent-tabs-mode t
         tab-width 2
         c-basic-offset 2)

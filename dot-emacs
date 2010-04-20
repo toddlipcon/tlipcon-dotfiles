@@ -35,7 +35,7 @@
 
 (load-file "~/.xemacs/init.el")
 (load-file "~/.xemacs/custom.el")
-(load-file "~/Desktop/espresso.elc")
+(load-file "~/.emacs-inc/espresso.elc")
 (load-file "~/.emacs-inc/markdown-mode.elc")
 (load-file "~/.emacs-inc/js2.elc")
 (tool-bar-mode -1)

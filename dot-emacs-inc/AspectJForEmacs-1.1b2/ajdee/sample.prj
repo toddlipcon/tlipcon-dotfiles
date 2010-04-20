@@ -1,0 +1,36 @@
+;;; This is an example JDEE prj.el "project" file for an AspectJ project, in
+;;; particular spacewar.
+;;;
+;;; A prj.el file permits each project to take on unique settings, in this
+;;; case both AspectJ settings and settings for spacewar itself.  This is
+;;; particularly valuable if you use JDEE for both regular Java and
+;;; AspectJ projects.  The file is placed in the project directory.
+
+(require 'ajdee)
+(when (not aspectj-mode) (aspectj-mode))  ; because it makes it work
+
+;;;
+;;; JDEE/speedbar settings to (a) make it behave properly for AspectJ, and (b)
+;;; configure for spacewar.
+;;;
+(custom-set-variables
+ '(jde-compiler '("ajc" "ajc")) ; ajc is AspectJ's compiler
+ '(jde-javadoc-command-path "ajdoc")
+
+ ;; Widen the speedbar to show more of AJ's longer tag names.
+ '(speedbar-frame-parameters
+   (quote ((minibuffer) (width . 30) (border-width . 0) (menu-bar-lines . 0)
+           (unsplittable . t))))
+ ;; Don't let speedbar split into submenus smaller than 40 items
+ '(speedbar-tag-split-minimum-length 40)
+
+ ;; Compile and run options are for spacewar, in examples/spacewar.
+ ;; *if* compiling packages, name root dir for package hierarchy
+ ;; to tell ajc where .class files should go.
+ '(jde-compile-option-directory "./..")
+ '(jde-run-working-directory "./..")
+ '(jde-run-application-class "spacewar.Game")
+ ; ajc provides an ``argfile'' mechanism for specifying all files.
+ '(aspectj-compile-file-specification "-argfile demo.lst")
+)
+

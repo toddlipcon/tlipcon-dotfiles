@@ -1,0 +1,186 @@
+<html>
+<!-- XXX fix - from docbook-generated development guide -->
+<head>
+   <title>AspectJ-mode 1.1b2</title>
+</head>
+    
+    <h2>AspectJ-mode 1.1b2 User's Guide</h2>
+   | <small><a href="README-AspectJForEmacs.html">AspectJForEmacs</a></small>|
+   <p>
+      This guide describes aspectj-mode for GNU Emacs and XEmacs, which
+      provides enhanced editing and management of AspectJ code via a minor
+      mode extension of java-mode. Included in this document
+      are guidance for aspectj-mode's <a href="aspectj-mode.html#ajmode-featuresandusage" title="Features and Usage">use</a>, and
+      <a href="aspectj-mode.html#ajmode-installationetc" title="Installation and Compatibility">installation and compatibility</a>.
+      See the README file in the aspectj-mode's distribution directory for
+      release-specific details.
+
+      For more information on AspectJ, see 
+      <a href="http://eclipse.org/aspectj">http://eclipse.org/aspectj</a>.
+    </p><p>
+      AspectJ minor mode provides (see graphic):
+      <div class="itemizedlist"><ul><li><p><a name="d0e1451"></a>
+    	Viewing and navigation of aspect structures, permitting
+    	navigation between aspect code and the code that it affects, via
+    	a `jump' menu (and in the speedbar and Classes menu for JDE
+    	users).
+          </p></li><li><p><a name="d0e1454"></a>
+    	Source code annotation of inter-type and advice declarations,
+    	as well as the code they affect.
+          </p></li><li><p><a name="d0e1457"></a>
+    	AspectJ-style compilation, using .lst files to generate a
+	compilation submenu.
+          </p></li><li><p><a name="d0e1460"></a>
+    	Highlighting of AspectJ keywords and declaration names.
+    	          </p></li></ul></div>
+    </p><p>
+      The first two are derived from ajc's last build of the AspectJ program.
+      An example usage is given below.
+    </p><p>
+      <span class="inlinemediaobject"><a name="aspectjmodescreenshot"></a><img src="aspectj-mode.gif"></span>
+    </p></div><div class="refsect1"><a name="ajmode-featuresandusage"></a><h2>Features and Usage</h2><p>
+      All commands governing AspectJ mode are available from the AspectJ menu
+      on the toolbar. Besides those described below, there is a menu item
+      Customize options for viewing and customizing
+      the options of the mode and AJ Mode user guide
+      to view this file. Keyword and declaration highlighting is enabled above
+      the minimal level of highlighting.
+    </p><p>
+      By default, AspectJ mode is automatically turned on when a buffer
+      named with a <tt>.java</tt> suffix is entered.
+      The command
+      <b>M-x aspectj-mode-in-force-toggle</b> globally toggles
+      the features of the mode, easing quickly moving between
+      AspectJ and Java projects (also available as AspectJ mode
+      extensions in the AspectJ menu).
+    </p><div class="refsect2"><a name="d0e1495"></a><h3>Aspect Structure and Navigation</h3><p>
+        AspectJ minor mode highlights aspect relationships in the text with
+        textual annotations on the program source (optionally can be turned
+        off), such as the <tt>[Player, Robot, Ship]</tt> marking after the advice in EnsureShipIsAlive
+        at the bottom of the <a href="aspectj-mode.html#aspectjmodescreenshot">figure</a>,
+        which indicates that the advice refers to join points within Ship
+        objects. The following commands (also available from the menu) manage
+        annotations and navigation:
+      </p><div class="table"><p><a name="minormodecommands"></a><b>Table 1. 
+          AspectJ Minor Mode Commands for Annotations and Navigation
+        </b></p><table summary="&#xA;          AspectJ Minor Mode Commands for Annotations and Navigation&#xA;        " border="1"><colgroup><col><col></colgroup><thead><tr><th>Command (keyboard shortcut)</th><th>Description</th></tr></thead><tbody><tr><td>M-x aspectj-jump-menu (C-x C-j)</td><td>
+    	    Display popup menu of advisers, advisees, and inter-type declarations.
+    	    Navigate to item by selecting with mouse 
+            (see <a href="aspectj-mode.html#aspectjmodescreenshot2">figure</a> below).
+    	  </td></tr><tr><td>M-x aspectj-show-annotations</td><td>
+    	    Add crosscut annotations on the text on current buffer.
+    	  </td></tr><tr><td>M-x aspectj-dont-show-annotations</td><td>
+    	    Remove crosscut annotations from text on current buffer.
+    	  </td></tr></tbody></table></div><p>
+        The default for whether annotations are shown or not can be
+        customized by selecting Customize options
+        from the AspectJ menu.
+      </p><p>
+      <span class="inlinemediaobject"><a name="aspectjmodescreenshot2"></a><img src="aspectj-mode2.gif"></span>
+    </p></div><div class="refsect2"><a name="d0e1549"></a><h3>Compilation</h3><p>
+        The Compile submenu
+        accessible from the AspectJ menu presents the
+        known<tt> .lst</tt> files for the project. Selecting
+        one compiles the project with that <tt>.lst</tt> file
+        and remembers that for future compiles. The
+        Compile... command accessible from the
+        Emacs Tools menu is customized through the
+        project customization option <tt>Aspectj Tools Compile
+          Command</tt>, customizable from the
+        AspectJ menu.
+      </p></div></div><div class="refsect1"><a name="ajmode-installationetc"></a><h2>Installation and Compatibility</h2><p> AspectJ mode requires the installation of <a href="http://www.gnu.org/software/emacs/" target="_top">GNU Emacs 20.3.1</a>
+      or <a href="http://www.xemacs.org/" target="_top">XEmacs 21.1.14 (Unix/Linux)</a>,
+      or <a href="http://www.xemacs.org/" target="_top">XEmacs 21.4 (Windows)</a>,
+      or higher.  In general, the most recent non-alpha/beta versions of these
+      are recommended.  A web browser is required to view this documentation
+      via Emacs.  Small modifications to the <tt>.emacs</tt> file
+      configures AspectJ mode and enables autoloading AspectJ mode when a
+      <tt>.java</tt> file is loaded.
+    </p><div class="refsect2"><a name="d0e1599"></a><h3>
+        Installation
+      </h3>
+      <p>
+          Step 1, with enhancements, can be found in the example Emacs
+          initialization file <tt>sample.emacs</tt> in the
+          distribution.
+        </p><div class="orderedlist"><ol type="1"><li><p><a name="d0e1610"></a>
+    	The files in this package need to be in the load-path and
+    	``required''. For example, for the 1.0 release:
+    	<pre class="programlisting">
+    	  ;; I keep my emacs packages in C:/Emacs
+    	  (setq load-path (cons "C:/Emacs/aspectj-emacsMode-1.0" load-path))
+    	  (require 'aspectj-mode)</pre>
+          </p></li><li><p><a name="d0e1616"></a>
+    	<span class="emphasis"><i>[Optional]</i></span> add <tt>-emacssym</tt>
+	switch to the <tt>ajc</tt> and <tt>ajc.bat</tt>
+	files in your AspectJ tools installations (in the
+	<tt>/bin</tt> directory).  If you invoke the compiler
+	outside Emacs, this will
+	ensure that your compiles always generate information for annotations
+	and the jump menu in the form of <tt>.ajesym</tt> files.
+          </p></li><li><p><a name="d0e1637"></a>
+    	
+    	<span class="emphasis"><i>[XEmacs only]</i></span> Go to the
+    	<tt>xemacs-packages/lisp</tt> directory of your
+    	XEmacs distribution and move the <tt>jde</tt>
+    	directory to someplace harmless. Otherwise, Java files will come
+    	up in JDE mode.
+          </p></li></ol></div></div><div class="refsect2"><a name="d0e1651"></a><h3>Customizing Options</h3><p>
+        Selecting Customize options from the
+        AspectJ menu displays a number of options that
+        customize AspectJ mode. These control whether annotations are shown
+        by default, as well as a
+        number of options controlling compilation and beanshell for
+        java-mode.
+        Example customizations are given in the file
+	<tt>sample.emacs</tt> in the distribution.
+      </p></div></div><div class="refsect1"><a name="d0e1665"></a><h2>Usage and Upgrade Problems</h2><div class="itemizedlist"><ul><li><p><a name="d0e1669"></a><span class="emphasis"><i>Symptom</i></span>: No annotations show.  Message:
+
+<pre class="screen">
+AspectJ Mode Warning: Can't find declarations file for...
+</pre>
+
+</p><p>AspectJ file has not been compiled with ajc and the <tt>-emacssym</tt>
+	flag,
+        or was compiled with an obsolete version of ajc. After compilation,
+        there should be a &lt;file&gt;.ajesym for every &lt;file&gt;.java in the
+        build. If .ajsym files are present but error persists, recompile. Note
+        that aspectj-mode for JDE has a fallback view for uncompiled files.
+       </p></li><li><p><a name="d0e1682"></a><span class="emphasis"><i>Symptom</i></span>: Annotations are misplaced in the
+	code. </p><p>AspectJ mode operates by querying data
+        derived from the most recent compile that includes the
+	<tt>-emacssym</tt> flag.  Recompile the entire program with
+        ajc including the switch.  Consider permanently installing the switch
+	by editing the ajc and ajc.bat files in the /bin file in your
+	distribution.</p></li><li><p><a name="d0e1692"></a><span class="emphasis"><i>Symptom</i></span>: New customization option settings were saved
+        for future sessions, but do not show up when Emacs is restarted.
+        </p><p>You may have two sets of saved settings in
+        your .emacs file, and Emacs updated the first one, which may be shadowed
+        by the second.</p></li><li><p><a name="d0e1699"></a><span class="emphasis"><i>Symptom</i></span>: Java files that are part of a Java project not written
+        in AspectJ come up in aspectj-mode.     </p><p>Emacs uses the file suffix (.java) to
+        determine which mode to invoke.  You can either globally toggle the
+	AspectJ features from the AspectJ menu.
+        </p></li><li><p><a name="d0e1706"></a><span class="emphasis"><i>Symptom</i></span>: Reported bug fixes and new features
+	to aspectj-mode are not seen, or aspectj-mode.el cannot be found or
+	loaded, with message:
+
+<pre class="screen">
+Error in init file: File error: "Cannot open load file", "aspectj-mode"
+</pre>
+
+</p><p>Your load-path variable (set in your .emacs)
+	is referring to an old release. Change your load-path to
+        point at the directory for the current release. See the sample.emacs
+	files in the distribution, for example.</p></li><li><p><a name="d0e1716"></a><span class="emphasis"><i>Symptom</i></span>: When trying to get a jump menu,
+       I get the message "No crosscut elements at point" even though 
+       there is a [list] on the same line.
+        </p><p>The caret (point) is probably on or after the list.
+        To see the crosscut elements you need to hit the jump menu 
+        on the same line that the annotated elements appear as a list 
+        of items surrounded by '[' and ']' on the same line as the 
+        affected declaration.  If the caret is on the same line as the 
+        elements and before the list (i.e. not at the end of the 
+        list of elements) the jump menu should work. 
+<hr>
+</body>
+</html>

@@ -1,0 +1,448 @@
+Change history for AspectJ mode for Emacs (AJDEE), in reverse-chronological
+order.  Please See the CHANGES file for aspectj-mode for additional changes
+that may affect AJDEE indirectly.
+===============================================================================
+1.0.0 (30 November 2001)
+
+- Support for .aj extension.
+- Improved filtering of code completions (hides internal symbols).
+- Removed configuration to launch ajdb as debugger.
+- Tested on JDEE 2.2.9beta7
+
+===============================================================================
+1.0rc3 (14 November 2001)
+
+- Adapt for new JDEE compiler setup (JDEE 2.2.9beta4).
+- Fix completion bug.
+- Fix ajdoc launch bug.
+- Fix speedbar navigation bug (positioning in target buffer).
+
+===============================================================================
+1.0rc2 (11 October 2001)
+
+- Fixes for consistency with aspectj-mode changes.
+
+===============================================================================
+1.0rc1 (5 October 2001)
+
+- No AJDEE-specific changes.
+
+===============================================================================
+1.0b1 (29 August 2001)
+
+Miscellaneous
+-------------
+- Documentation is now provided separately for aspectj-mode and AJDEE
+  (including this CHANGES file, which has been cloned for the two versions).
+  See the CHANGES file for aspectj-mode for additional changes that may
+  affect AJDEE.
+
+===============================================================================
+1.0a1 (9 August 2001)
+
+Features
+--------
+- New toggle in AspectJ menu that removes extensions that are invasive
+  to the native modes it extends.  This eases moving between Java and
+  AspectJ projects.
+- Updates for 1.0 keywords.  Removed keywords no longer deprecated.
+- JDEE 2.2.7.1 compatibility.
+- JDEE 2.2.8beta4 compatibility.
+- speedbar 0.14alpha compatibility.
+
+Miscellaneous
+-------------
+- The code for extending java-mode and JDEE mode has been split into two
+  files to facilitate independent development and maintenance.
+- Reformatting of AspectJ menu.
+- Removed backwards compatibility for JDE 2.2.6 and earlier.
+- Removed sample.makefile, now that .lst file support is more complete.
+- Update to version number checks (XEmacs 21.4 on Windows, 21.1.4 on Linux).
+- Forces launch of beanshell at earliest possible point.
+- Review and update of code documentation.
+
+Repairs
+-------
+- keymap fix for GNU Emacs 21 alpha.
+- Removed easy-mmode implementation for XEmacs (now in pcl-cvs under
+  xemacs-packages).
+- speedbar-0.14alpha removed buffer-local handling of the
+  speedbar-dynamic-tags-function-list, so this is now handled by aspectj-mode.
+- Preservation of cursor locations when visiting buffers behind the scenes.
+- Fixed jump-menu bug when in --no-windows mode.
+
+
+===============================================================================
+0.8b4 (24 May 2001)
+
+Features
+--------
+- Support for .lst file compilation via the Compile item on the AspectJ menu
+  (both java-mode and JDE).  See Miscellaneous for a related change.
+- JDE 2.2.7beta11 compatibility.  (NOTE: AspectJ Mode does not appear to work
+  with speedbar 0.14beta1.)
+
+Miscellaneous
+-------------
+- Changed default value of aspectj-tools-compile-command to "ajc " so that
+  the Tools menu's Compile... command will work better for the new .lst file
+  compilation features.
+
+===============================================================================
+0.8b3 (25 Apr 2001)
+
+Features
+--------
+- Support for .lst file compilation via the Compile item on the AspectJ menu
+  (JDE only, at this time).  aspectj-mode finds all the .lst files in the
+  directory of the current file and presents them as options for compilation
+  in the Compile menu.  It remembers the list .lst file used for compilation.
+- Collapsed the two defcustom variables, aspectj-jde-mode-show-annotations
+  and aspectj-java-mode-show-annotations into the single variable
+  aspectj-show-annotations.  Please change references to these old variables
+  to the new one.
+- JDE 2.2.7beta10 compatibility; tested for for XEmacs 21.4.0.
+
+Repairs
+-------
+- Display of new introductions now properly supported in speedbar and
+  annotations.
+- AspectJ menu's menu items now disabled when appropriate to do so.
+- Tweaks to relative paths in sample.prj.
+
+===============================================================================
+0.8b2 (27 Mar 2001)
+
+Features
+--------
+- JDE 2.2.7beta4 compatibility.
+
+Repairs
+-------
+- Changed default value of aspectj-jde-no-bovinate customization to nil
+  so that JDE completion will work by default.  
+- JDE bovination and class list scanning are now turned off when visiting
+  buffers to work out the annotations.  It will still do some bovination and
+  class scanning, but it will be lessened.
+- Menu widths now computed properly for speedbar (JDE).
+- Introductions now show properly in annotations and speedbar (although
+  private introductions are shown in "target" class, which is in appropriate).
+- XEmacs fontification of AspectJ keywords at JDE's new java fontification
+  level now works. 
+- Right-justification of annotations now computed properly when tabs appear in
+  text.
+- Editing on an annotated line now updates annotation on the fly to keep its
+  proper position (and avoid confusing the cursor position in GNU Emacs).
+- Backwards compatibility fix for JDE 2.2.6.
+
+===============================================================================
+0.8b1 (15 Mar 2001)
+
+Features
+--------
+- JDE 2.2.7beta2 compatibility (note that this version of JDE contains bugs),
+  still backwards compatible to 2.2.6.
+- XEmacs 21.1.13 compatibility (use of fsf-compat packages).  AspectJ mode
+  now requires 21.1.13 or higher.  See documentation for using java-mode; JDE
+  comes built-in to XEmacs now.
+- Classes menu now updates fully automatically.
+- ajdoc now supports -version and -author.
+
+Repairs
+-------
+- aspectj-create-imenu-index now reverts to default-value of
+  jde-imenu-create-index-function customization variable when it fails;
+  make sure that you are not setting aspectj-create-imenu-index as the
+  default value in your .emacs or prj.el files.
+- aspectj-version-lessp now correctly extracts the minor-minor number if
+  there are more than three terms.
+- launch of beanshell under XEmacs now happens on startup and doesn't hang.
+- annotations now behave nicely when there are multiple decls on a line.
+
+===============================================================================
+0.7b12 (8 Feb 2001)
+
+Repairs
+-------
+- Jump menu once again works under "no windows" (emac -nw).
+- Caching bug fixes (performance) and refactoring.
+- aspectj-jde-no-bovinate now turns off jde-which-method-mode.
+- put aspectj-reset-annotations-and-jumps-on-command-hook back in
+  for backwards compatibility.
+- AspectJ Classes menu and speedbar now reverts to JDE's when no
+  declarations file and aspectj-jde-no-bovinate is t.
+- Improved updating/display of annotations during buffer navigations.
+
+Miscellaneous
+-------------
+- Extensive remodularization.
+- Caching commentary.
+- Maintenance commentary.
+- User no longer has to set jde-compile-finish-hook (remove settings
+  of this from .emacs and prj.el files).  Now set internally via
+  local hook settings.
+
+===============================================================================
+0.7b11 update (14 Jan 2001)
+
+Repairs
+-------
+- JDE 2.2.6 compatibility
+   + Classes menu built off of defcustom jde-imenu-create-index-functions.
+     add this to your customize-variable settings in your .emacs/prj.el:
+         '(jde-imenu-create-index-function 'aspectj-create-imenu-index)
+     Classes menu still works pre 2.2.6.
+   + updated aspectj-jde-no-bovinate functionality.
+- fixed erroneous speedbar-frame-width override.
+- annoying repetition of "beanshell not found" message removed.
+- corrected and expanded keyword highlighting.
+
+===============================================================================
+0.7b11 (11 Jan 2001)
+
+Features
+--------
+- Reorganized documentation, now mostly contained in ajdeForEmacs.html.
+- Menu item in AspectJ menu for launching browser to view documentation.
+- Mode version number displayed in AspectJ menu.
+- Simple version checking for Emacs-en and JDE.
+- Small extension to JDE's field/method completion feature to behave better
+  with AspectJ (can now find aspect declaration, filters out "hidden" decls).
+- JDE Classes menu now shows AspectJ information.
+- Javadoc support.  Calls ajdoc with jde-compile-file-specification (if not
+  empty), and blocks unsupported -version and -author switches.
+- New customization option "aspectj-jde-no-bovinate" (default on), which turns
+  off the running of the bovinator.  This saves significant time during loading
+  and editing.  The only "negative" effect is that the method designation
+  in the modeline (jde-which-method-mode) shows only the current class.
+- Jump menu is now provided as a pop-up menu, rather than as a buffer.
+
+Repairs
+-------
+- Fixed beanshell launch sequence to use JDE's launch when using JDE.
+- Fixed XEmacs launch of javaw in java-mode to be java.
+- Reduced scope of some overrides of global variables to particular calls.
+- XEmacs will no longer hang if the beanshell launch hangs.
+- Made post-command-hook buffer local, making annotations update correctly.
+  This exposed a bug in JDE (no timer.el), for which I constructed a solution.
+- Now truncate annotations on GNU Emacs so that wrapping annotations don't
+  screw up cursor positioning.
+- Hack to get beanshell to launch in the jde-compile-option-directory.
+  Completion works a lot better this way.
+
+Miscellaneous
+-------------
+- Documentation updated as part of reorganization.
+- Added list of known bugs to README.
+- Added example Makefile (sample.makefile) and complementary JDE settings
+  to sample.prj.
+
+===============================================================================
+0.7b10 (14 Dec 2000)
+
+Features
+--------
+- Full support for XEmacs.  This includes sucking in the code for
+  easy-mmode.el and overlay.el so XEmacs users don't have to hunt these down.
+- Improved crosscut annotations in code now list types, rather than a count.
+- JDE customization examples to invoke ajdb (_emacs.jde-mode, sample.prj)
+- Removed hasaspect as a highlighted keyword, added dominates,
+  thisStaticJoinPoint, and proceed.
+
+Repairs
+-------
+- Made aspectj-declarations-timestamp buffer local.
+- Fixed references to old packages/files.
+- Renamed aspectj-mode menu to AspectJ (with capital J at end)
+- Reimplemented menus so that they disappear when the mode is off.
+- Fixed right-justification bug in crosscut annotations.
+
+Miscellaneous
+-------------
+- Updates to README (description of files, update of troubleshooting).
+- Default is now "on" for annotations in JDE mode.  Used to be "off".
+
+===============================================================================
+0.7b9 (14 Nov 2000)
+
+Features
+--------
+- Tested on JDE 2.2.5.  Note that JDE 2.2.5 does not work with speedbar .13
+  or bovinator 1.3.  See the JDE website for details.
+
+Repairs
+-------
+- Fixed speedbar feature-interaction bug relating to
+  speedbar-tag-hierarchy-method, making sure that
+  speedbar-trim-words-tag-hierarchy really isn't called.
+
+===============================================================================
+0.7b8 (12 Oct 2000)
+
+No changes were made to AJDE for Emacs in this release.
+
+===============================================================================
+0.7b7 (6 Oct 2000)
+
+Features
+--------
+- Improved caching of declarations/crosscut information, which dramatically
+  increases performance with JDE/speedbar.
+- Automatic updatng of declarations/crosscut information (due to recompilation)
+  for display of annotations and jump menu.
+- Now automatically prevents the speedbar menu from getting screwed up by
+  speedbar-trim-words-tag-hierarchy.  If you have a custom-set-variables
+  entry like this in your .emacs:
+  	'(speedbar-tag-hierarchy-method
+  	  (quote (speedbar-prefix-group-tag-hierarchy)))
+  you can remove it. (Note: this did not actually work; see 0.7b8 repairs)
+- Tested on JDE 2.2.4.
+  
+Repairs
+-------
+- Fixed declarations mappings.
+- Removed reference to undefined variable.
+- Fixed unquoted symbol.
+
+Miscellaneous
+-------------
+- Improved sample .emacs files.
+- Example prj.el file (sample.prj) for AspectJ JDE projects.
+
+===============================================================================
+0.7b6 (14 Sep 2000)
+
+Features
+--------
+- New defcustom variables for managing beanshell launch in java-mode.
+- New defcustom variable for changing the Compile... command accessed from
+  the Emacs Tools menu.
+- Tested on JDE 2.2.3 (now requires elib, available from the JDE website).
+- Revised/expanded troubleshooting in README
+- Simplified .emacs sample files (_emacs.java-mode, _emacs.jde-mode).
+
+Repairs
+-------
+- Eliminated launch of beanshell when not editing .java files.
+
+Miscellaneous
+-------------
+- Full separation of extensions for java mode and jde mode.
+   + required packages (java-mode extension no longer requires JDE download).
+   + documentation (requirements and installation in aspectj-support.el).
+   + sample _emacs files (_emacs.java-mode, _emacs.jde-mode).
+- Removed call to bsh-prime (now handled in bsh eval loop).
+
+===============================================================================
+0.7b5 (21 Aug 2000)
+
+Features
+--------
+- Upgrade/tested to JDE 2.2.2.
+
+Repairs
+-------
+- Eliminated modified version of jde.el.  Make sure none lurks in your
+  Emacs installation.
+- Eliminated dependence of java-mode extensions on jde-run.el.  Extensions
+  are still dependent on beanshell.el and bsh.jar in JDE distribution.
+- Updated copied version of bsh-internal.el to revision 1.16.
+
+===============================================================================
+0.7b4 (9 Aug 2000)
+
+Features
+--------
+- Upgrade to JDE 2.2.0 and its auxiliary packages, including speedbar (known
+  to work on JDE 2.1.8 and higher.)
+- Loss of speedbar ``aspectj fall back mode'' when your aspectj files are
+  not compiled.
+
+Repairs
+-------
+- Slightly improved robustness on Unix vis a vis beanshell
+
+Miscellaneous
+-------------
+- Migrated changes on speedbar.el into aspectj-support.el (make sure
+  you don't have a speedbar.el lurking in <aspectj-home>/ide/emacs).
+- Rework of troubleshooting advice in README.
+- Inclusion of usage information from the old user's guide, into guide.html.
+
+===============================================================================
+0.7 (5 June 2000)
+
+Features
+--------
+- Updates for 0.7 language changes
+- Improved highlighting for aspectj features
+
+Repairs
+-------
+- Mode continues to operate even if an .ajysm file from compile is deleted
+- Removed ringing bell when going to speedbar fallback mode
+- Bug fixes for speedbar fallback mode
+
+Miscellaneous
+-------------
+- Variable aspectj-font-lock-extra-types is no longer in use.  A set of
+  this variable may be lurking in your .emacs/_emacs file as a saved setting.
+  Remove it.
+- More troubleshooting advice in README
+
+===============================================================================
+
+
+Features
+--------
+- Highlighting and indentation support for aspectj features.
+- Relative file names and length-limited signatures in Jump Menu.
+- Automatic detection/prevention of bsh start-up race condition (Unix/Linux).
+
+Repairs
+-------
+- Proper navigation on introduction targets in speedbar.
+- Code clean-up.
+- Logic error fix for annotation settings.
+
+Miscellaneous
+-------------
+- Default home subdirectory for release is aspectj0.6, variable load-path
+  in .emacs/_emacs file must be updated to load new aspectj-support.el.
+- Added section in users-guide.html, and example under spacewar section.
+- Changes to README and installation procedure.
+
+===============================================================================
+0.5b2 (2 February 2000)
+
+Features
+--------
+- More information on crosscuts in speedbar display
+- Decreased dependence on JDE allows running in Java mode.
+  You must now put the line
+	(require 'jde)
+  in your _emacs/.emacs file to enable JDE mode.
+- Customization of aspect annotations feature via AspectJ menu.
+- Improved error reporting for missing declarations files.
+- Troubleshooting for Unix (see Troubleshooting in README).
+
+Repairs
+-------
+- Minor bug fix: call buffer-file-name rather than buffer-name
+  while cross-referencing.
+- Code clean-up.
+- Disabling of annotations feature for XEmacs (which doesn't support overlays).
+  XEmacs still doesn't work on ntemacs due to process problem; maybe Unix.
+
+Miscellaneous
+-------------
+- Updates to _emacs.sample to require JDE package and widen speedbar.
+- Inclusion of CHANGES file.
+
+===============================================================================
+05.b1 (21 January 2000)
+
+- Initial release, including aspectj-support.el, modified jde.el and
+  speedbar.el, and README.
+
+

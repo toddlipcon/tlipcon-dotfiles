@@ -8,3 +8,5 @@ for x in $BASE/dot-* ; do
   echo Linking ~/$realdot to $x
   ln -s $x $HOME/$realdot
 done
+
+find $BASE -name \*.el | xargs emacs -batch -f batch-byte-compile

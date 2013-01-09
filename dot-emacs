@@ -5,7 +5,9 @@
   ;; If there is more than one, they won't work right.
  '(bsh-commands "/usr/share/java/bsh-commands")
  '(bsh-jar "/tmp/bsh_jar/bsh-2.0b4.jar")
+ '(compilation-scroll-output 'first-error)
  '(dabbrev-case-fold-search nil)
+ '(display-buffer-reuse-frames t)
  '(ecb-layout-window-sizes (quote (("left9" (0.32620320855614976 . 0.9893617021276596)))))
  '(ecb-options-version "2.32")
  '(font-lock-maximum-decoration t)

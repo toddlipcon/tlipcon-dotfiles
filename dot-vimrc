@@ -5,6 +5,24 @@ set incsearch
 set hlsearch
 syntax on
 
+set nocompatible
+set wildmenu
+set wildmode=list:longest,full 
+set ruler
+set laststatus=2
+
 highlight DiffAdd    ctermbg=White
 highlight DiffChange    ctermbg=White
 highlight DiffText ctermbg=Yellow
+
+if has("unix")
+ cmap %/ <C-R>=expand("%:p:h") . '/'<CR>
+else
+ cmap %/ <C-R>=expand("%:p:h") . '\'<CR>
+endif
+
+
+augroup filetype
+  au! BufRead,BufNewFile *.proto setfiletype proto
+augroup end
+

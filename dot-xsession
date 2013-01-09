@@ -1,4 +1,6 @@
-#!/bin/sh
+#!/bin/bash
+
+set -x
 
 
 if [ -f $HOME/.colors.h ]; then
@@ -16,13 +18,8 @@ export TRIMBG="black"
 
 xrdb -I$HOME -load $HOME/.Xdefaults
 
-xscreensaver &
-
 eval `ssh-agent`
+gtk-redshift -l 37.8:-122 &
 
-# syndaemon disables the touchpad for a short period of time after
-# keypresses to avoid accidental input
-which syndaemon && syndaemon -S -t -i 1 -d
-
-xset r 400 40
-fvwm2
+export WINDOW_MANAGER=/usr/bin/fvwm2 
+exec gnome-session --session=fvwm

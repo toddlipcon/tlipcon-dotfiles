@@ -48,6 +48,11 @@
 (setq tags-revert-without-query 1)
 (add-hook 'c++-mode-hook 'etags-update-mode)
 
+;; goto-last-change
+(autoload 'goto-last-change "~/.emacs-inc/goto-last-change.elc"
+  "Set point to the position of the last change." t)
+(global-set-key "\C-x\C-\\" 'goto-last-change)
+
 (tool-bar-mode -1)
 (set-scroll-bar-mode 'right)
 (set-variable 'inhibit-startup-screen t)

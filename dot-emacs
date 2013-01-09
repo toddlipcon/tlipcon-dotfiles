@@ -42,6 +42,12 @@
 (load-file "~/.emacs-inc/espresso.elc")
 (load-file "~/.emacs-inc/markdown-mode.elc")
 (load-file "~/.emacs-inc/js2.elc")
+
+;; etags auto-update
+(load-file "~/.emacs-inc/etags-update.elc")
+(setq tags-revert-without-query 1)
+(add-hook 'c++-mode-hook 'etags-update-mode)
+
 (tool-bar-mode -1)
 (set-scroll-bar-mode 'right)
 (set-variable 'inhibit-startup-screen t)

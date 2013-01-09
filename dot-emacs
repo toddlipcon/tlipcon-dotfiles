@@ -168,9 +168,10 @@ vi style of % jumping to matching brace."
 (ido-mode 1)
 (global-set-key [(control ?x) ?g] 'ido-find-file-in-tag-files)
 
+(load-file "~/.emacs-inc/autocomplete-setup.el")
+
 
 (load-file "~/.emacs-inc/twit.el")
-
 (load-file "~/.emacs-inc/nxhtml/autostart.el")
 
 (add-to-list 'auto-mode-alist '("\\.mako\\'" . mako-nxhtml-mumamo-mode))

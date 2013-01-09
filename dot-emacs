@@ -222,4 +222,8 @@ vi style of % jumping to matching brace."
  '(widget-inactive ((((class grayscale color) (background light)) (:foreground "gray60"))))
  '(zmacs-region ((t (:background "gray45"))) t))
 
-(set-face-font 'default "-*-fixed-medium-r-*--10-*-iso8859-1");
+(defun font-size (size)
+  (interactive "nSize: ")
+  (let ((thefont (format "-*-fixed-medium-r-*--%s-*-iso8859-1" size)))
+    (set-face-font 'default thefont)))
+(font-size 12)

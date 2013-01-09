@@ -130,6 +130,12 @@ if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
 
+if [ -d ~/.bashrc.d ]; then
+  for x in ~/.bashrc.d/* ; do
+    . $x
+  done
+fi
+
 if [ -f ~/cloudera/bashrc ]; then
     . ~/cloudera/bashrc
 fi

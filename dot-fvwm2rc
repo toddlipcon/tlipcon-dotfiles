@@ -14,7 +14,10 @@
 
 
 DeskTopSize 3x3
-EdgeResistance 175 175
+EdgeResistance 500
+Style * EdgeMoveDelay 500
+Style * EdgeMoveResistance 500
+
 EdgeScroll 100 100
 ClickTime 750
 XorValue 65535

@@ -154,7 +154,7 @@ vi style of % jumping to matching brace."
 
 (defun hadoop-switch-to-test ()
   (interactive)
-  (let ((test-file (replace-in-string (buffer-file-name) "/test/\\(core\\|hdfs\\|mapred\\)/" "/java/")))) ) ; TODO finish me
+  (let ((test-file (replace-regexp-in-string (buffer-file-name) "/test/\\(core\\|hdfs\\|mapred\\)/" "/java/")))) ) ; TODO finish me
 
 (defun ido-find-file-in-tag-files ()
   (interactive)

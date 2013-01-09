@@ -4,7 +4,8 @@
     (c-comment-only-line-offset	.	0)
     (c-offsets-alist		.	((substatement-open	. 0)
 					 (case-label		. +)
-					 (inline-open		. 0)))
+					 (inline-open		. 0)
+                                         (innamespace           . 0)))
     )
   "My C Programming Style")
 
@@ -46,7 +47,9 @@
 
 (defun my-c-mode-common-hook ()
   (c-add-style "PERSONAL" my-c-style t)
-  (setq tab-width 4)
+  (c-set-style "personal")
+  (setq c-basic-offset 2)
+  (setq tab-width 2)
   (font-lock-mode)
   (line-number-mode t)
 )

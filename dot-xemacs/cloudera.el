@@ -85,6 +85,9 @@
           2))
   (setq indent-tabs-mode nil))
 
+(if (not (functionp 'replace-in-string))
+  (defun replace-in-string (str search replace)
+    (replace-regexp-in-string (regexp-quote search) replace str)))
 
 (defun switch-to-test ()
   "Switch to corresponding unit test."
@@ -113,6 +116,10 @@
 
 (add-hook 'java-mode-hook 'set-c-settings)
 (add-hook 'jde-mode-hook 'set-c-settings)
+(add-hook 'c++-mode-hook 'set-c-settings)
+
+;; use C++ mode for .h files
+(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 
 ;; highlight trailing whitespaces in all modes - our coding guidelines say
 ;; trailing whitespace is bad

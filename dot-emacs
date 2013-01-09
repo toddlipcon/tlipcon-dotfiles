@@ -34,7 +34,8 @@
  '(c-basic-offset 2)
  '(query-user-mail-address nil)
  '(sgml-markup-faces (quote ((start-tag . default) (end-tag . default) (comment . default) (pi . default) (sgml . default) (doctype . default) (entity . default) (shortref . default) (ignored . default) (ms-start . default) (ms-end . default))))
- '(user-mail-address "todd@lipcon.org"))
+ '(user-mail-address "todd@lipcon.org")
+ '(vc-handled-backends (quote nil)))
 
 (load-file "~/.xemacs/init.el")
 (load-file "~/.xemacs/custom.el")

@@ -10,6 +10,8 @@ XTerm*background:       black
 XTerm*saveLines:        40000
 XTerm*scrollBar:        true
 XTerm*termName:         xterm-color
+XTerm*color4: royalblue
+XTerm*color12: lightblue
 
 !
 ! XEmacs defaults

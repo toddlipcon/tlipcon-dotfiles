@@ -124,7 +124,7 @@ AddToFunc ExecFocus
 + "I" Wait $0
 + "I" Next ($0) Focus
 
-DestoryFunc RearrangeAll
+DestroyFunc RearrangeAll
 AddToFunc RearrangeAll
 + "I" All (CurrentPage) PlaceAgain
 
@@ -155,6 +155,10 @@ Mouse 1         W       M       Raise-Move
 Mouse 2         W       M       Move
 Mouse 3         W       M       Lower-Move
 
+# Don't allow move/raise/lower of the edge panel, since stupid
+# gnome 3 uses meta-right-click to add/remove applets
+Mouse ("Top*Expanded*Edge*Panel") 0       W       M       --
+
 
 Mouse 1         I       N       Iconify
 Mouse 2         I       N       Iconify
@@ -172,15 +176,15 @@ Mouse 1         2       N       Maximize-Func
 Mouse 2         2       N       Maximize-Func
 Mouse 3         2       N       Maximize-Func
 
-Key F1          A       A       GotoPage 0 0
-Key F2          A       A       GotoPage 1 0
-Key F3          A       A       GotoPage 2 0 
-Key F4          A       A       GotoPage 0 1
-Key F5		A	A	GotoPage 1 1
-Key F6		A	A	GotoPage 2 1
-Key F7		A	A	GotoPage 0 2
-Key F8		A	A	GotoPage 1 2
-Key F9		A	A	GotoPage 2 2
+Key F1          A       N       GotoPage 0 0
+Key F2          A       N       GotoPage 1 0
+Key F3          A       N       GotoPage 2 0 
+Key F4          A       N       GotoPage 0 1
+Key F5		A	N	GotoPage 1 1
+Key F6		A	N	GotoPage 2 1
+Key F7		A	N	GotoPage 0 2
+Key F8		A	N	GotoPage 1 2
+Key F9		A	N	GotoPage 2 2
 
 Key	Left	A	MS	CursorMove -5 0
 Key	H	A	MS	CursorMove -5 0
@@ -210,8 +214,9 @@ Key	period	W	MS	Lower
 Key	Shift_R	W	MS	Raise
 
 Key	backslash A	MS	ExecFocus xterm &
-Key	bracketright A	MS	Exec firefox-3.5 &
+Key	bracketright A	MS	Exec google-chrome &
 Key	P       A	MS	Exec gnuclient &
+Key     1       A       MS      Exec xterm -e "/home/todd/bin/haus-screen"
 
 
 #************************************************************************
@@ -231,7 +236,7 @@ AddToMenu RootMenu	"Root Menu"	Title
 
 AddToMenu Special	"Special"	Title		
 +			"Refresh"	Refresh
-+			"Restart fvwm2"	Restart csh -c "exec fvwm2"
++			"Restart fvwm2"	Restart bash -c "exec fvwm2"
 +			"Reload XDefaults"  Exec xrdb -I$HOME -load $HOME/.Xdefaults
 +			""		Nop
 +			""		Nop

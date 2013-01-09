@@ -100,6 +100,11 @@ gr() {
   fi
 }
 
+gri() {
+   AMT=${1:-10}
+   git rebase -i HEAD~$AMT
+}
+
 lst() {
   ls -ltr | tail -5
 }

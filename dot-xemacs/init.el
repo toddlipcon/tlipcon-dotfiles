@@ -1,10 +1,14 @@
+
 (defconst my-c-style
   '((c-tab-always-indent	.	nil)
     (c-access-key		.	"\\<\\(signals\\|public\\|protected\\|private\\|public slots\\|protected slots\\|private slots\\):")
     (c-comment-only-line-offset	.	0)
     (c-offsets-alist		.	((substatement-open	. 0)
 					 (case-label		. +)
+                                         (access-label          . -1)
 					 (inline-open		. 0)
+                                         (inextern-lang         . 0)
+                                         (arglist-intro         . ++)
                                          (innamespace           . 0)))
     )
   "My C Programming Style")
@@ -44,15 +48,30 @@
 (defconst xemacs-p
   (not (null (save-match-data (string-match "XEmacs\\|Lucid" emacs-version)))))
 
+(require 'ycmd)
+(require 'company-ycmd)
 
 (defun my-c-mode-common-hook ()
   (c-add-style "PERSONAL" my-c-style t)
   (c-set-style "personal")
   (setq c-basic-offset 2)
   (setq tab-width 2)
+  (setq fill-column 90)
   (font-lock-mode)
   (line-number-mode t)
+  (google-set-c-style)
+  (ycmd-mode)
+  (company-mode)
+  (company-ycmd-setup)
+  (flycheck-mode)
+  (flycheck-ycmd-setup)
+  (flyspell-prog-mode)
+;  (imenu-add-menubar-index)
 )
+
+; flyspell overrides C-., but would rather use it for flycheck-next-error
+(eval-after-load "flyspell"
+  '(define-key flyspell-mode-map (kbd "C-.") nil))
 
 (defun my-cperl-indent ()
   "My cperl tab"
@@ -165,11 +184,11 @@
 (set-variable 'uniquify-buffer-name-style 'post-forward)
 
 ;; iswitchb - better buffer switching
-(load-library "iswitchb")
-(iswitchb-default-keybindings)
+;(load-library "iswitchb")
+;(iswitchb-mode 1)
 ;; when switching to a buffer that's open in another frame, open it
 ;; in this window as well, rather than raising that frame
-(set-variable 'iswitchb-default-method 'samewindow)
+;(set-variable 'iswitchb-default-method 'samewindow)
 
 (load-file "~/.xemacs/fcsh-mode.el")
 (load-file "~/.xemacs/erlang-custom.el")

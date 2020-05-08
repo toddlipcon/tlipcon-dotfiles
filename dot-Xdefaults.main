@@ -5,12 +5,12 @@
 !
 
 XTerm.geometry:         80x24
-XTerm*foreground:       green
+XTerm*foreground:       grey90
 XTerm*background:       black
 XTerm*saveLines:        40000
 XTerm*scrollBar:        true
 XTerm*termName:         xterm-color
-XTerm*color4: royalblue
+XTerm*color4:  LightSlateBlue
 XTerm*color12: lightblue
 
 !

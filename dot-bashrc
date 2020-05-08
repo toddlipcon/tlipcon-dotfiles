@@ -15,10 +15,16 @@ export HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+export HISTFILESIZE=20000
+export HISTSIZE=20000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
+
+
+# allow **/ globbing
+shopt -s globstar
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -105,6 +111,22 @@ gri() {
    git rebase -i HEAD~$AMT
 }
 
+gro() {
+  git rebase -i origin/master
+}
+
+gl() {
+  git log "$@"
+}
+
+grc() {
+  git rebase --continue
+}
+
+gd() {
+  git diff
+}
+
 lst() {
   ls -ltr | tail -5
 }
@@ -121,7 +143,36 @@ git-diff-no-gen() {
     (cd ./$(git rev-parse --show-cdup) && xargs git diff $@ --)
 }
 alias vless='/usr/share/vim/vim72/macros/less.sh'
-alias eclipse='GTK2_RC_FILES=~/.gtkrc-eclipse ~/sw/eclipse/eclipse'
+alias eclipse='UBUNTU_MENUPROXY= GTK2_RC_FILES=~/.gtkrc-eclipse ~/sw/eclipse/eclipse'
+alias m=make
+
+n() {
+  if [ ! -e build/latest ]; then
+    echo No build/latest symlink
+    return 1
+  fi
+  ninja -C $(readlink build/latest) "$@"
+}
+
+t() {
+  prog=$1
+  shift
+  if [ ! -e build/latest ]; then
+    echo No build/latest symlink
+    return 1
+  fi
+  ninja -C $(readlink build/latest) $prog && ./build/latest/bin/$prog "$@"
+}
+
+kenv() {
+  export PATH=/home/todd/git/kudu/thirdparty/clang-toolchain/bin/:$PATH 
+  export ASAN_SYMBOLIZER_PATH=/home/todd/git/kudu/thirdparty/installed/uninstrumented/bin/llvm-symbolizer
+  export CLANG_ALWAYS_COLOR=1
+  export NO_REBUILD_THIRDPARTY=1
+}
+
+# Alias to clear scrollback
+alias cls='printf "\033c"'
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -129,6 +180,27 @@ alias eclipse='GTK2_RC_FILES=~/.gtkrc-eclipse ~/sw/eclipse/eclipse'
 if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
+
+export PATH=/usr/lib/ccache:$HOME/sw/apache-maven-3.6.1/bin:$PATH:$HOME/git/tlipcon-bin:/opt/bin
+export PATH=/home/todd/sw/gdb-7.9-install/bin:$PATH
+
+export PATH=/home/todd/sw/clang-238013/bin:$PATH
+export GLOG_colorlogtostderr=1
+
+export PATH=/home/todd/.gem/ruby/1.9.1/bin:$PATH
+
+# Go setup
+export GOROOT=$HOME/sw/go
+export GOPATH=$HOME/gopath
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+
+export ASAN_SYMBOLIZER_PATH=$(which llvm-symbolizer-3.4)
+
+# The next line updates PATH for the Google Cloud SDK.
+source '/home/todd/google-cloud-sdk/path.bash.inc'
+
+# The next line enables bash completion for gcloud.
+source '/home/todd/google-cloud-sdk/completion.bash.inc'
 
 if [ -d ~/.bashrc.d ]; then
   for x in ~/.bashrc.d/* ; do
@@ -140,4 +212,19 @@ if [ -f ~/cloudera/bashrc ]; then
     . ~/cloudera/bashrc
 fi
 
-export PATH=$HOME/sw/apache-maven-3.0.2/bin:$PATH:$HOME/git/tlipcon-bin:/opt/bin
+
+
+# Chromium depottools
+export PATH=$PATH:$HOME/git/depot_tools/
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# dist test
+export DIST_TEST_HOME=/home/todd/git/dist_test
+
+
+# pip install --user
+export PATH=$PATH:$HOME/.local/bin
+
+#export PS1="\[\e[44m\]\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$\[\e[m\]"
+#export PS1="\[\e[44m\]\h\[\e[m\]:\w "
+export PS1="\[\e[44m\]\u\[\e[m\]\[\e[44m\]@\[\e[m\]\[\e[44m\]\h\[\e[m\]:\w$ "

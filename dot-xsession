@@ -18,8 +18,20 @@ export TRIMBG="black"
 
 xrdb -I$HOME -load $HOME/.Xdefaults
 
-eval `ssh-agent`
-gtk-redshift -l 37.8:-122 &
+synclient FingerHigh=60 FingerLow=55 MaxTapMove=100 TouchpadOff=0 PalmDetect=1
 
-export WINDOW_MANAGER=/usr/bin/fvwm2 
-exec gnome-session --session=fvwm
+synclient RightButtonAreaLeft=3700
+synclient RightButtonAreaRight=0
+synclient RightButtonAreaTop=2300
+synclient RightButtonAreaBottom=0
+synclient MiddleButtonAreaRight=3500
+synclient MiddleButtonAreaLeft=2900
+synclient MiddleButtonAreaBottom=2300
+synclient MiddleButtonAreaTop=0
+
+
+eval `ssh-agent`
+# gtk-redshift -l 37.8:-122 &
+
+
+exec gnome-session --session=fvwm "$@"

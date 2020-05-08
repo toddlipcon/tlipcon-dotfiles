@@ -13,7 +13,7 @@
 #
 
 
-DeskTopSize 3x3
+DeskTopSize 4x1
 EdgeResistance 500
 Style * EdgeMoveDelay 500
 Style * EdgeMoveResistance 500
@@ -22,6 +22,16 @@ EdgeScroll 100 100
 ClickTime 750
 XorValue 65535
 OpaqueMoveSize unlimited
+
+SetEnv ROOTBG  steelblue
+SetEnv ROOTFG  black
+SetEnv TEXTBG  gray80
+SetEnv TEXTFG  black
+SetEnv TRIMBG  grey10
+SetEnv TRIMFG  red
+SetEnv HIGHBG  grey20
+SetEnv HIGHFG  red
+
 
 # Allow commands from shell scripts
 AddToFunc StartFunction "I" Module FvwmCommandS
@@ -32,15 +42,14 @@ AddToFunc StartFunction "I" Module FvwmCommandS
 #
 #************************************************************************
 AddToFunc StartFunction	"I" Module FvwmButtons
-*FvwmButtons: ButtonGeometry	90x80-1-1
+*FvwmButtons: ButtonGeometry	45x40-1-1
 *FvwmButtons: Rows		1
-*FvwmButtons: Columns		6
+*FvwmButtons: Columns		4
 *FvwmButtons: BoxSize		smart
 *FvwmButtons: Back		$[ROOTBG]
-*FvwmButtons: (3x1 Swallow(UseOld) "caltrain-monitor" `Exec exec xterm +sb -T "caltrain-monitor" -e "watch -n 300 --no-title ~/python-caltrain/next.sh"`)
-*FvwmButtons: (2x1 Swallow(UseOld) "FvwmIconMan")
 *FvwmButtons: (2x1 Swallow(UseOld) "FvwmPager")
-*FvwmButtons: (1x1 Swallow(UseOld) "dclock" `Exec exec dclock -bg $[TEXTBG] -fg $[TEXTFG] -led_off $[TEXTBG] -fade -date "%b %e %Y"`)
+*FvwmButtons: (1x1 Swallow(UseOld) "dclock" `Exec exec dclock -miltime -bg $[TEXTBG] -fg $[TEXTFG] -led_off $[TEXTBG] -fade -date "%b %e %Y"`)
+*FvwmButtons: (1x1 Swallow(UseOld) "dclock" `Exec exec env "TZ=America/Los_Angeles" dclock -miltime -bg $[TEXTBG] -fg $[TEXTFG] -led_off $[TEXTBG] -fade -date "%b %e %Y"`)
 
 
 #************************************************************************
@@ -59,25 +68,6 @@ AddToFunc StartFunction	"I" Module FvwmPager 0 0
 *FvwmPager: BalloonBack         $[HIGHBG]
 *FvwmPager: BalloonFore         $[HIGHFG]
 
-#************************************************************************
-#
-# FvwmIconMan module
-#
-#************************************************************************
-AddToFunc StartFunction	"I" Module FvwmIconMan
-*FvwmIconMan*Resolution  		page
-*FvwmIconMan*background  		$[ROOTBG]
-*FvwmIconMan*foreground  		$[ROOTBG]
-*FvwmIconMan*format      		"%t"
-*FvwmIconMan*followfocus 		true
-*FvwmIconMan*sort        		none
-*FvwmIconMan*plainbutton          	up $[ROOTFG] $[ROOTBG]
-*FvwmIconMan*iconbutton         	up $[ROOTFG] $[ROOTBG]
-*FvwmIconMan*selectbutton         	down $[ROOTFG] $[ROOTBG]
-*FvwmIconMan*focusbutton          	up $[HIGHFG] $[HIGHBG]
-*FvwmIconMan*focusandselectButton 	down $[HIGHFG] $[HIGHBG]
-*FvwmIconMan*dontshow 			icon=Untitled name=Untitled
-*FvwmIconMan*managergeometry 		1x5
 
 #************************************************************************
 #
@@ -94,10 +84,13 @@ Style "Fvwm*"		NoTitle, WindowListSkip
 Style "Fvwm*"		CirculateSkipIcon, CirculateSkip
 Style "FvwmButtons"	Sticky, NeverFocus
 
-Style "XTerm"		SloppyFocus
+Style "XTerm"		SloppyFocus, GrabFocus
 
 MenuStyle *		mwm
 MenuStyle *		Foreground $[HIGHFG], Background $[HIGHBG]
+
+# Fix focus policy in java apps:
+Style "sun-awt*"        Lenience
 
 #************************************************************************
 #
@@ -118,11 +111,11 @@ AddToFunc   resize-click
 + "C" Resize
 
 
-DestroyFunc ExecFocus
-AddToFunc ExecFocus
-+ "I" Exec exec $0 $1
-+ "I" Wait $0
-+ "I" Next ($0) Focus
+DestroyFunc ExecTerm
+AddToFunc ExecTerm
++ "I" Exec exec gnome-terminal
++ "I" Wait "Gnome-terminal"
++ "I" Next ("Gnome-terminal") Focus
 
 DestroyFunc RearrangeAll
 AddToFunc RearrangeAll
@@ -176,15 +169,18 @@ Mouse 1         2       N       Maximize-Func
 Mouse 2         2       N       Maximize-Func
 Mouse 3         2       N       Maximize-Func
 
-Key F1          A       N       GotoPage 0 0
-Key F2          A       N       GotoPage 1 0
-Key F3          A       N       GotoPage 2 0 
-Key F4          A       N       GotoPage 0 1
-Key F5		A	N	GotoPage 1 1
-Key F6		A	N	GotoPage 2 1
-Key F7		A	N	GotoPage 0 2
-Key F8		A	N	GotoPage 1 2
-Key F9		A	N	GotoPage 2 2
+# Key F1          A       N       GotoPage 0 0
+# Key F2          A       N       GotoPage 1 0
+# Key F3          A       N       GotoPage 2 0 
+# Key F4          A       N       GotoPage 0 1
+# Key F5		A	N	GotoPage 1 1
+# Key F6		A	N	GotoPage 2 1
+# Key F7		A	N	GotoPage 0 2
+# Key F8		A	N	GotoPage 1 2
+# Key F9		A	N	GotoPage 2 2
+
+Key     Left    A       CM      GotoPage -1p +0p
+Key     Right   A       CM      GotoPage +1p +0p
 
 Key	Left	A	MS	CursorMove -5 0
 Key	H	A	MS	CursorMove -5 0
@@ -204,8 +200,7 @@ Key     K	A       CMS     CursorMove 0 -1
 Key     Right   A       CMS     CursorMove 1 0
 Key     L	A       CMS     CursorMove 1 0
 
-Key	I       W       MS      Raise
-Key	O       W       MS      Lower
+Key	I       W       MS      Module FvwmIdent
 Key	M	W	MS	Move
 Key	N	W	MS	Resize
 
@@ -213,11 +208,20 @@ Key	slash	W	MS	Raise
 Key	period	W	MS	Lower
 Key	Shift_R	W	MS	Raise
 
-Key	backslash A	MS	ExecFocus xterm &
-Key	bracketright A	MS	Exec google-chrome &
-Key	P       A	MS	Exec gnuclient &
-Key     1       A       MS      Exec xterm -e "/home/todd/bin/haus-screen"
+Key     Up      W       4       Maximize
+Key     Down    W       4       Maximize
 
+Key	Q       A	MS	Next ("Gnome-terminal") Focus 
+Key	backslash A	MS	ExecTerm
+Key	bracketright A	MS	Exec google-chrome --blacklist-accelerated-compositing &
+Key	P       A	MS	Exec gnuclient &
+Key     1       A       MS      Exec gnome-terminal -e "/home/todd/bin/haus-screen"
+
+Key     XF86Calculator  A       A       Exec /home/todd/bin/distraction&
+Key     XF86Mail        A       A       Exec /home/todd/bin/distraction&
+Key     XF86MonBrightnessUp     A       A       Exec xbacklight -inc 10
+Key     XF86MonBrightnessDown     A       A       Exec xbacklight -dec 10
+Key     XF86Search      A       A       Exec /home/todd/bin/fix-monitor.sh
 
 #************************************************************************
 #
@@ -254,3 +258,24 @@ AddToMenu Window-Ops	"Window Ops"	Title
 +			""		Nop
 +			"Close"		Close
 +			"Destroy"	Destroy
+
+Key Tab A M WindowList (CurrentPage) Root c c \
+ CurrentDesk, NoGeometry, CurrentAtEnd, IconifiedAtEnd
+
+Key Tab A SM WindowList Root c c \
+ NoGeometry, CurrentAtEnd, IconifiedAtEnd
+
+Style * Lenience
+
+
+
+# Make chrome tab switcher get focus
+*FvwmEvent-NewWindow: StartDelay 4
+*FvwmEvent-NewWindow: add_window FuncFocusWindow
+
+DestroyFunc FuncFocusWindow
+AddToFunc   FuncFocusWindow
++ I ThisWindow ("Fast Tab Switcher")
++ I Focus
+
+AddToFunc StartFunction I FvwmEvent FvwmEvent-NewWindow

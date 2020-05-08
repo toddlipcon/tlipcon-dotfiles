@@ -26,3 +26,5 @@ augroup filetype
   au! BufRead,BufNewFile *.proto setfiletype proto
 augroup end
 
+au FileType gitcommit set tw=72
+

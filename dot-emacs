@@ -1,15 +1,38 @@
+(require 'cask "/home/todd/sw/cask/cask.el")
+(cask-initialize)
+(require 'pallet)
+(pallet-mode t)
+
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+; (package-initialize)
+
 (custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(bsh-commands "/usr/share/java/bsh-commands")
  '(bsh-jar "/tmp/bsh_jar/bsh-2.0b4.jar")
- '(compilation-scroll-output 'first-error)
- '(dabbrev-case-fold-search nil)
+ '(c-basic-offset 2)
+ '(company-backends
+   (quote
+    (company-elisp company-nxml company-css company-xcode
+                   (company-gtags company-etags company-dabbrev-code company-pysmell company-keywords)
+                   company-oddmuse company-files company-dabbrev)))
+ '(compilation-scroll-output (quote first-error))
  '(display-buffer-reuse-frames t)
- '(ecb-layout-window-sizes (quote (("left9" (0.32620320855614976 . 0.9893617021276596)))))
+ '(ecb-layout-window-sizes
+   (quote
+    (("left9"
+      (0.32620320855614976 . 0.9893617021276596)))))
  '(ecb-options-version "2.32")
+ '(evernote-developer-token
+   "S=s33:U=379496:E=15db07ae7ad:C=15658c9bb98:P=1cd:A=en-devtoken:V=2:H=f59257c5fec5ea0519e893c21100ba3f")
+ '(evernote-username "todd@lipcon.org")
  '(font-lock-maximum-decoration t)
  '(font-lock-verbose nil)
  '(gutter-buffers-tab-enabled nil)
@@ -29,29 +52,121 @@
  '(lineker-column-limit 80)
  '(mumamo-set-major-mode-delay 0.5)
  '(nxhtml-skip-welcome t)
- '(package-get-download-sites (quote (("US (Main XEmacs Site)" "ftp.xemacs.org" "pub/xemacs/packages") ("Australia (aarnet.edu.au)" "mirror.aarnet.edu.au" "pub/xemacs/packages") ("Australia (au.xemacs.org)" "ftp.au.xemacs.org" "pub/xemacs/packages") ("Austria (at.xemacs.org)" "ftp.at.xemacs.org" "editors/xemacs/packages") ("Belgium (be.xemacs.org)" "ftp.be.xemacs.org" "xemacs/packages") ("Brazil (br.xemacs.org)" "ftp.br.xemacs.org" "pub/xemacs/packages") ("Canada (ca.xemacs.org)" "ftp.ca.xemacs.org" "pub/Mirror/xemacs/packages") ("Canada (crc.ca)" "ftp.crc.ca" "pub/packages/editors/xemacs/packages") ("Canada (ualberta.ca)" "sunsite.ualberta.ca" "pub/Mirror/xemacs/packages") ("Czech Republic (cz.xemacs.org)" "ftp.cz.xemacs.org" "MIRRORS/ftp.xemacs.org/pub/xemacs/packages") ("Denmark (dk.xemacs.org)" "ftp.dk.xemacs.org" "pub/emacs/xemacs/packages") ("Finland (fi.xemacs.org)" "ftp.fi.xemacs.org" "pub/mirrors/ftp.xemacs.org/pub/tux/xemacs/packages") ("France (fr.xemacs.org)" "ftp.fr.xemacs.org" "pub/xemacs/packages") ("France (mirror.cict.fr)" "mirror.cict.fr" "xemacs/packages") ("France (pasteur.fr)" "ftp.pasteur.fr" "pub/computing/xemacs/packages") ("Germany (de.xemacs.org)" "ftp.de.xemacs.org" "pub/ftp.xemacs.org/tux/xemacs/packages") ("Germany (tu-darmstadt.de)" "ftp.tu-darmstadt.de" "pub/editors/xemacs/packages") ("Ireland (ie.xemacs.org)" "ftp.ie.xemacs.org" "mirrors/ftp.xemacs.org/pub/xemacs/packages") ("Italy (it.xemacs.org)" "ftp.it.xemacs.org" "unix/packages/XEMACS/packages") ("Japan (aist.go.jp)" "ring.aist.go.jp" "pub/text/xemacs/packages") ("Japan (asahi-net.or.jp)" "ring.asahi-net.or.jp" "pub/text/xemacs/packages") ("Japan (dti.ad.jp)" "ftp.dti.ad.jp" "pub/unix/editor/xemacs/packages") ("Japan (jaist.ac.jp)" "ftp.jaist.ac.jp" "pub/GNU/xemacs/packages") ("Japan (jp.xemacs.org)" "ftp.jp.xemacs.org" "pub/GNU/xemacs/packages") ("Japan (nucba.ac.jp)" "mirror.nucba.ac.jp" "mirror/xemacs/packages") ("Japan (sut.ac.jp)" "sunsite.sut.ac.jp" "pub/archives/packages/xemacs/packages") ("Korea (kr.xemacs.org)" "ftp.kr.xemacs.org" "pub/tools/emacs/xemacs/packages") ("New Zealand (nz.xemacs.org)" "ftp.nz.xemacs.org" "mirror/ftp.xemacs.org/packages") ("Norway (no.xemacs.org)" "ftp.no.xemacs.org" "pub/xemacs/packages") ("Poland (pl.xemacs.org)" "ftp.pl.xemacs.org" "pub/unix/editors/xemacs/packages") ("Russia (ru.xemacs.org)" "ftp.ru.xemacs.org" "pub/xemacs/packages") ("Slovakia (sk.xemacs.org)" "ftp.sk.xemacs.org" "pub/mirrors/xemacs/packages") ("South Africa (za.xemacs.org)" "ftp.za.xemacs.org" "mirrorsites/ftp.xemacs.org/packages") ("Sweden (se.xemacs.org)" "ftp.se.xemacs.org" "pub/gnu/xemacs/packages") ("Switzerland (ch.xemacs.org)" "ftp.ch.xemacs.org" "mirror/xemacs/packages") ("UK (uk.xemacs.org)" "ftp.uk.xemacs.org" "sites/ftp.xemacs.org/pub/xemacs/packages") ("US (ibiblio.org)" "ibiblio.org" "pub/mirrors/xemacs/packages") ("US (stealth.net)" "ftp.stealth.net" "pub/mirrors/ftp.xemacs.org/pub/xemacs/packages") ("US (unc.edu)" "metalab.unc.edu" "pub/packages/editors/xemacs/packages") ("US (us.xemacs.org)" "ftp.us.xemacs.org" "pub/xemacs/packages") ("US (utk.edu)" "ftp.sunsite.utk.edu" "pub/xemacs/packages"))))
- '(python-indent 2)
- '(c-basic-offset 2)
+ '(package-get-download-sites
+   (quote
+    (("US (Main XEmacs Site)" "ftp.xemacs.org" "pub/xemacs/packages")
+     ("Australia (aarnet.edu.au)" "mirror.aarnet.edu.au" "pub/xemacs/packages")
+     ("Australia (au.xemacs.org)" "ftp.au.xemacs.org" "pub/xemacs/packages")
+     ("Austria (at.xemacs.org)" "ftp.at.xemacs.org" "editors/xemacs/packages")
+     ("Belgium (be.xemacs.org)" "ftp.be.xemacs.org" "xemacs/packages")
+     ("Brazil (br.xemacs.org)" "ftp.br.xemacs.org" "pub/xemacs/packages")
+     ("Canada (ca.xemacs.org)" "ftp.ca.xemacs.org" "pub/Mirror/xemacs/packages")
+     ("Canada (crc.ca)" "ftp.crc.ca" "pub/packages/editors/xemacs/packages")
+     ("Canada (ualberta.ca)" "sunsite.ualberta.ca" "pub/Mirror/xemacs/packages")
+     ("Czech Republic (cz.xemacs.org)" "ftp.cz.xemacs.org" "MIRRORS/ftp.xemacs.org/pub/xemacs/packages")
+     ("Denmark (dk.xemacs.org)" "ftp.dk.xemacs.org" "pub/emacs/xemacs/packages")
+     ("Finland (fi.xemacs.org)" "ftp.fi.xemacs.org" "pub/mirrors/ftp.xemacs.org/pub/tux/xemacs/packages")
+     ("France (fr.xemacs.org)" "ftp.fr.xemacs.org" "pub/xemacs/packages")
+     ("France (mirror.cict.fr)" "mirror.cict.fr" "xemacs/packages")
+     ("France (pasteur.fr)" "ftp.pasteur.fr" "pub/computing/xemacs/packages")
+     ("Germany (de.xemacs.org)" "ftp.de.xemacs.org" "pub/ftp.xemacs.org/tux/xemacs/packages")
+     ("Germany (tu-darmstadt.de)" "ftp.tu-darmstadt.de" "pub/editors/xemacs/packages")
+     ("Ireland (ie.xemacs.org)" "ftp.ie.xemacs.org" "mirrors/ftp.xemacs.org/pub/xemacs/packages")
+     ("Italy (it.xemacs.org)" "ftp.it.xemacs.org" "unix/packages/XEMACS/packages")
+     ("Japan (aist.go.jp)" "ring.aist.go.jp" "pub/text/xemacs/packages")
+     ("Japan (asahi-net.or.jp)" "ring.asahi-net.or.jp" "pub/text/xemacs/packages")
+     ("Japan (dti.ad.jp)" "ftp.dti.ad.jp" "pub/unix/editor/xemacs/packages")
+     ("Japan (jaist.ac.jp)" "ftp.jaist.ac.jp" "pub/GNU/xemacs/packages")
+     ("Japan (jp.xemacs.org)" "ftp.jp.xemacs.org" "pub/GNU/xemacs/packages")
+     ("Japan (nucba.ac.jp)" "mirror.nucba.ac.jp" "mirror/xemacs/packages")
+     ("Japan (sut.ac.jp)" "sunsite.sut.ac.jp" "pub/archives/packages/xemacs/packages")
+     ("Korea (kr.xemacs.org)" "ftp.kr.xemacs.org" "pub/tools/emacs/xemacs/packages")
+     ("New Zealand (nz.xemacs.org)" "ftp.nz.xemacs.org" "mirror/ftp.xemacs.org/packages")
+     ("Norway (no.xemacs.org)" "ftp.no.xemacs.org" "pub/xemacs/packages")
+     ("Poland (pl.xemacs.org)" "ftp.pl.xemacs.org" "pub/unix/editors/xemacs/packages")
+     ("Russia (ru.xemacs.org)" "ftp.ru.xemacs.org" "pub/xemacs/packages")
+     ("Slovakia (sk.xemacs.org)" "ftp.sk.xemacs.org" "pub/mirrors/xemacs/packages")
+     ("South Africa (za.xemacs.org)" "ftp.za.xemacs.org" "mirrorsites/ftp.xemacs.org/packages")
+     ("Sweden (se.xemacs.org)" "ftp.se.xemacs.org" "pub/gnu/xemacs/packages")
+     ("Switzerland (ch.xemacs.org)" "ftp.ch.xemacs.org" "mirror/xemacs/packages")
+     ("UK (uk.xemacs.org)" "ftp.uk.xemacs.org" "sites/ftp.xemacs.org/pub/xemacs/packages")
+     ("US (ibiblio.org)" "ibiblio.org" "pub/mirrors/xemacs/packages")
+     ("US (stealth.net)" "ftp.stealth.net" "pub/mirrors/ftp.xemacs.org/pub/xemacs/packages")
+     ("US (unc.edu)" "metalab.unc.edu" "pub/packages/editors/xemacs/packages")
+     ("US (us.xemacs.org)" "ftp.us.xemacs.org" "pub/xemacs/packages")
+     ("US (utk.edu)" "ftp.sunsite.utk.edu" "pub/xemacs/packages"))))
+ '(package-selected-packages
+   (quote
+    (bazel-mode company use-package lsp-ui company-lsp lsp-mode column-enforce-mode expand-region multiple-cursors yasnippet python-mode pyfmt py-autopep8 importmagic flymake-python-pyflakes flycheck-pycheckers flycheck-pyflakes cmake-mode wgrep-ack rust-mode modern-cpp-font-lock magit iedit groovy-mode go-mode flycheck-ycmd company-ycmd adoc-mode)))
+ '(python-indent 4)
+ '(python-indent-offset 4)
  '(query-user-mail-address nil)
- '(sgml-markup-faces (quote ((start-tag . default) (end-tag . default) (comment . default) (pi . default) (sgml . default) (doctype . default) (entity . default) (shortref . default) (ignored . default) (ms-start . default) (ms-end . default))))
+ '(sgml-markup-faces
+   (quote
+    ((start-tag . default)
+     (end-tag . default)
+     (comment . default)
+     (pi . default)
+     (sgml . default)
+     (doctype . default)
+     (entity . default)
+     (shortref . default)
+     (ignored . default)
+     (ms-start . default)
+     (ms-end . default))))
  '(user-mail-address "todd@lipcon.org")
- '(vc-handled-backends (quote nil)))
+ '(vc-handled-backends (quote nil))
+ '(ycmd-server-command (quote ("python" "/home/todd/git/ycmd/ycmd"))))
 
 (load-file "~/.xemacs/init.el")
 (load-file "~/.xemacs/custom.el")
-(load-file "~/.emacs-inc/espresso.elc")
+(load-file "~/.emacs.d/google-c-style.el")
 (load-file "~/.emacs-inc/markdown-mode.elc")
-(load-file "~/.emacs-inc/js2.elc")
+
+(use-package lsp-mode
+  :commands (lsp lsp-deferred))
+
+(add-hook 'go-mode-hook #'lsp-deferred)
+
+;; optional - provides fancier overlays
+(use-package lsp-ui
+  :commands lsp-ui-mode)
+
+;; if you use company-mode for completion (otherwise, complete-at-point works out of the box):
+(use-package company-lsp
+  :commands company-lsp)
+
+
+;; idomenu
+(autoload 'idomenu "~/.emacs-inc/idomenu.elc" nil t)
+(global-set-key "\C-o" 'idomenu)
+
+;; expand-region
+(require 'expand-region)
+(global-set-key (kbd "C-=") 'er/expand-region)
+
+;; multiple-cursor
+(require 'multiple-cursors)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+
 
 ;; etags auto-update
 (load-file "~/.emacs-inc/etags-update.elc")
 (setq tags-revert-without-query 1)
 (add-hook 'c++-mode-hook 'etags-update-mode)
+(add-hook 'c++-mode-hook #'modern-c++-font-lock-mode)
 
 ;; goto-last-change
 (autoload 'goto-last-change "~/.emacs-inc/goto-last-change.elc"
   "Set point to the position of the last change." t)
 (global-set-key "\C-x\C-\\" 'goto-last-change)
+
+;; my-ido-find-tag
+;;(autoload 'my-ido-find-tag "~/.emacs-inc/ido-find-tag.elc"
+;;  "find tag with ido completion")
+;;(global-set-key [(meta \.)] 'my-ido-find-tag)
+;; disabled the above since it seems to not actually find all tags.
 
 (tool-bar-mode -1)
 (set-scroll-bar-mode 'right)
@@ -62,8 +177,9 @@
 
 (autoload 'js2-mode "js2-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
-(autoload 'espresso-mode "espresso")
 
+(autoload 'protobuf-mode "~/.xemacs/protobuf-mode.el" nil t)
+(add-to-list 'auto-mode-alist '("\\.proto$" . protobuf-mode))
 
 (defun my-js2-indent-function ()
   (interactive)
@@ -124,12 +240,19 @@
 
 (add-hook 'js2-mode-hook 'my-js2-mode-hook)
 
+; buffer switching
+
 (defun switch-to-other-buffer ()
   (interactive)
   (switch-to-buffer (other-buffer)))
 (global-set-key [(control meta ?l)] 'switch-to-other-buffer)
 
+; ctrl-pageup
+(global-set-key [(control prior)] 'previous-buffer)
+(global-set-key [(control next)] 'next-buffer)
 
+
+; scrolling from keyboard
 (defun scroll-down-one ()
   (interactive)
   (scroll-down 1))
@@ -140,8 +263,23 @@
 (global-set-key [(control meta up)] 'scroll-down-one)
 (global-set-key [(control meta down)] 'scroll-up-one)
 
+; fast pointer movement
 (global-set-key [(control up)] (lambda () (interactive) (forward-line -6)))
 (global-set-key [(control down)] (lambda () (interactive) (forward-line 6)))
+
+; M-f: forward whitespace
+(global-set-key (kbd "M-f") 'forward-whitespace)
+
+; C-l: recenter current line to 1/3 point of frame
+(defun recenter-top-third ()
+  "Recenter the current window so that the current point is at the
+   vertical 1/3 mark"
+  (interactive)
+  (recenter (/ (window-body-height) 3)))
+(global-set-key [(control l)] 'recenter-top-third)
+
+; C-x C-j fill region
+(global-set-key [(control x) (control j)] 'fill-region)
 
 (defun goto-match-paren (arg)
   "Go to the matching parenthesis if on parenthesis, otherwise insert %.
@@ -152,9 +290,79 @@ vi style of % jumping to matching brace."
         (t (self-insert-command (or arg 1)))))
 (global-set-key [(control x) ?'] 'goto-match-paren)
 
+
+(defun join-line-below ()
+  "Like join-line, but joins the next line to this one, rather than
+   this one to previous"
+  (interactive)
+  (next-line)
+  (join-line))
+
+(global-set-key [(control j)] 'join-line-below)
+
+
 (defun hadoop-switch-to-test ()
   (interactive)
   (let ((test-file (replace-regexp-in-string (buffer-file-name) "/test/\\(core\\|hdfs\\|mapred\\)/" "/java/")))) ) ; TODO finish me
+
+
+(defun open-or-switch-to (file)
+  (let ((existing-buffer (find-buffer-visiting file)))
+    (cond (existing-buffer (pop-to-buffer existing-buffer))
+          (t (find-file-existing file)))))
+
+
+(defun switch-to-header-or-impl ()
+  (interactive)
+  (let ((other-file
+         (cond
+          ((not (buffer-file-name)) (error "Buffer not visiting a file"))
+          ((string-match-p "\\.cc$" (buffer-file-name))
+           (replace-regexp-in-string "\\.cc$" ".h"  (buffer-file-name)))
+          ((string-match-p "\\.h$" (buffer-file-name))
+           (replace-regexp-in-string "\\.h$" ".cc" (buffer-file-name)))
+          (t (error "Not a .cc or .h file: %s" (buffer-file-name))))))
+          (find-file-existing other-file)))
+;         (open-or-switch-to other-file)))
+(global-set-key (kbd "C-M-;") 'switch-to-header-or-impl)
+
+
+(defun get-buffers-matching-mode (mode)
+  "Returns a list of buffers where their major-mode is equal to MODE"
+  (let ((buffer-mode-matches '()))
+   (dolist (buf (buffer-list))
+     (with-current-buffer buf
+       (if (eq mode major-mode)
+           (add-to-list 'buffer-mode-matches buf))))
+   buffer-mode-matches))
+ 
+(defun multi-occur-in-this-mode ()
+  "Show all lines matching REGEXP in buffers with this major mode."
+  (interactive)
+  (multi-occur
+   (get-buffers-matching-mode major-mode)
+   (car (occur-read-primary-args))))
+
+(defun multi-occur-word-at-point ()
+  (interactive)
+  (multi-occur
+   (get-buffers-matching-mode major-mode)
+   (word-at-point)
+   3))
+
+
+; allow color in compilation mode and shell mode
+(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
+(require 'ansi-color)
+(defun colorize-compilation-buffer ()
+  (toggle-read-only)
+  (ansi-color-apply-on-region (point-min) (point-max))
+  (toggle-read-only))
+(add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
+
+
+
+(global-set-key [(control meta ?g)] 'multi-occur-word-at-point)
 
 (defun ido-find-file-in-tag-files ()
   (interactive)
@@ -168,7 +376,8 @@ vi style of % jumping to matching brace."
 (ido-mode 1)
 (global-set-key [(control ?x) ?g] 'ido-find-file-in-tag-files)
 
-(load-file "~/.emacs-inc/autocomplete-setup.el")
+(global-set-key [(control meta ?/)] 'company-complete)
+(global-set-key [(control ?.)] 'flycheck-next-error)
 
 
 (load-file "~/.emacs-inc/twit.el")
@@ -176,12 +385,15 @@ vi style of % jumping to matching brace."
 
 (add-to-list 'auto-mode-alist '("\\.mako\\'" . mako-nxhtml-mumamo-mode))
 
+;; highlight the current line
+(global-hl-line-mode 1)
+
 
 (custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(default ((t (:foreground "gray90" :background "black"))))
  '(blue ((t (:foreground "#99f"))) t)
  '(bold ((t nil)))
@@ -204,6 +416,7 @@ vi style of % jumping to matching brace."
  '(font-lock-variable-name-face ((nil (:foreground "plum1"))))
  '(font-lock-warning-face ((nil (:foreground "Red" :underline nil))))
  '(highlight ((t (:background "#556b2f"))))
+ '(hl-line ((t (:background "#333333"))))
  '(html-helper-bold-face ((t nil)))
  '(isearch ((t (:background "#008b8b"))))
  '(jde-java-font-lock-link-face ((t (:foreground "DeepSkyBlue"))))
@@ -227,3 +440,22 @@ vi style of % jumping to matching brace."
   (let ((thefont (format "-*-fixed-medium-r-*--%s-*-iso8859-1" size)))
     (set-face-font 'default thefont)))
 (font-size 12)
+
+(add-to-list 'load-path "~/.emacs.d/plugins/yasnippet")
+(require 'yasnippet)
+
+
+; evernote
+
+(add-to-list 'load-path "/home/todd/git/evernote-mode/")
+(require 'evernote-mode)
+(global-set-key "\C-cec" 'evernote-create-note)
+(global-set-key "\C-ceo" 'evernote-open-note)
+(global-set-key "\C-ces" 'evernote-search-notes)
+(global-set-key "\C-ceS" 'evernote-do-saved-search)
+(global-set-key "\C-cew" 'evernote-write-note)
+(global-set-key "\C-cep" 'evernote-post-region)
+(global-set-key "\C-ceb" 'evernote-browser)
+
+
+(require 'go-guru)
